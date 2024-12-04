@@ -12,6 +12,10 @@ enum class InstructionType {
   kMovInstruction,
   kCmpInstruction,
   kXorInstruction,
+  kAddInstructionAlternating,
+  kMovInstructionAlternating,
+  kCmpInstructionAlternating,
+  kXorInstructionAlternating,
 };
 
 constexpr auto getName(enum InstructionType Type) -> const char* {
@@ -28,8 +32,17 @@ constexpr auto getName(enum InstructionType Type) -> const char* {
     return "Cmp instruction without alternating registers";
   case InstructionType::kXorInstruction:
     return "Xor instruction without alternating registers";
+  case InstructionType::kAddInstructionAlternating:
+    return "Add instruction with alternating registers";
+  case InstructionType::kMovInstructionAlternating:
+    return "Mov instruction with alternating registers";
+  case InstructionType::kCmpInstructionAlternating:
+    return "Cmp instruction with alternating registers";
+  case InstructionType::kXorInstructionAlternating:
+    return "Xor instruction with alternating registers";
+  default:
+    return "unknown";
   }
-  return "unknown";
 }
 
 template <InstructionType Type> class SingleInstructionTest : public CacheMissTest {
@@ -48,6 +61,7 @@ private:
     for (auto I = 0U; I < InstructionCount; I++) {
       // Iterate over the available registers and emit the specified instruction acording to specified instruction type.
       const auto& CurrentGpRegister = AvailableGpRegisters.at(I % AvailableGpRegisters.size());
+      const auto& NextGpRegister = AvailableGpRegisters.at((I + 1) % AvailableGpRegisters.size());
       switch (Type) {
       case InstructionType::kNopInstruction:
         Cb.nop();
@@ -66,6 +80,18 @@ private:
         break;
       case InstructionType::kXorInstruction:
         Cb.xor_(CurrentGpRegister, CurrentGpRegister);
+        break;
+      case InstructionType::kAddInstructionAlternating:
+        Cb.add(CurrentGpRegister, NextGpRegister);
+        break;
+      case InstructionType::kMovInstructionAlternating:
+        Cb.mov(CurrentGpRegister, NextGpRegister);
+        break;
+      case InstructionType::kCmpInstructionAlternating:
+        Cb.cmp(CurrentGpRegister, NextGpRegister);
+        break;
+      case InstructionType::kXorInstructionAlternating:
+        Cb.xor_(CurrentGpRegister, NextGpRegister);
         break;
       }
     }

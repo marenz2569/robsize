@@ -42,6 +42,10 @@ private:
       std::make_shared<SingleInstructionTest<InstructionType::kMovInstruction>>(),
       std::make_shared<SingleInstructionTest<InstructionType::kCmpInstruction>>(),
       std::make_shared<SingleInstructionTest<InstructionType::kXorInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kAddInstructionAlternating>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kMovInstructionAlternating>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kCmpInstructionAlternating>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kXorInstructionAlternating>>(),
   };
 };
 

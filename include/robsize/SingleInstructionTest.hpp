@@ -45,73 +45,73 @@ enum class InstructionType {
 constexpr auto getName(enum InstructionType Type) -> const char* {
   switch (Type) {
   case InstructionType::kNopInstruction:
-    return "Single byte Nop instruction";
+    return "nop,single-byte";
   case InstructionType::kTwoByteNopInstruction:
-    return "Two byte Nop instruction";
+    return "nop,two-byte";
   case InstructionType::kAddInstruction:
-    return "Add instruction without alternating registers";
+    return "add,gp-registers,non-alternating";
   case InstructionType::kMovInstruction:
-    return "Mov instruction without alternating registers";
+    return "mov,gp-registers,non-alternating";
   case InstructionType::kCmpInstruction:
-    return "Cmp instruction without alternating registers";
+    return "cmp,gp-registers,non-alternating";
   case InstructionType::kXorInstruction:
-    return "Xor instruction without alternating registers";
+    return "xor,gp-registers,non-alternating";
   case InstructionType::kAddInstructionAlternating:
-    return "Add instruction with alternating registers";
+    return "add,gp-registers,alternating";
   case InstructionType::kMovInstructionAlternating:
-    return "Mov instruction with alternating registers";
+    return "mov,gp-registers,alternating";
   case InstructionType::kCmpInstructionAlternating:
-    return "Cmp instruction with alternating registers";
+    return "cmp,gp-registers,alternating";
   case InstructionType::kXorInstructionAlternating:
-    return "Xor instruction with alternating registers";
+    return "xor,gp-registers,alternating";
   case InstructionType::kXmmAddInstruction:
-    return "Xmm add instruction without alternating registers";
+    return "add,xmm-registers,non-alternating";
   case InstructionType::kXmmMovInstruction:
-    return "Xmm mov instruction without alternating registers";
+    return "mov,xmm-registers,non-alternating";
   case InstructionType::kXmmCmpInstruction:
-    return "Xmm cmp instruction without alternating registers";
+    return "cmp,xmm-registers,non-alternating";
   case InstructionType::kXmmXorInstruction:
-    return "Xmm xor instruction without alternating registers";
+    return "xor,xmm-registers,non-alternating";
   case InstructionType::kXmmAddInstructionAlternating:
-    return "Xmm add instruction with alternating registers";
+    return "add,xmm-registers,alternating";
   case InstructionType::kXmmMovInstructionAlternating:
-    return "Xmm mov instruction with alternating registers";
+    return "mov,xmm-registers,alternating";
   case InstructionType::kXmmCmpInstructionAlternating:
-    return "Xmm cmp instruction with alternating registers";
+    return "cmp,xmm-registers,alternating";
   case InstructionType::kXmmXorInstructionAlternating:
-    return "Xmm xor instruction with alternating registers";
+    return "xor,xmm-registers,alternating";
   case InstructionType::kYmmAddInstruction:
-    return "Ymm add instruction without alternating registers";
+    return "add,ymm-registers,non-alternating";
   case InstructionType::kYmmMovInstruction:
-    return "Ymm mov instruction without alternating registers";
+    return "mov,ymm-registers,non-alternating";
   case InstructionType::kYmmCmpInstruction:
-    return "Ymm cmp instruction without alternating registers";
+    return "cmp,ymm-registers,non-alternating";
   case InstructionType::kYmmXorInstruction:
-    return "Ymm xor instruction without alternating registers";
+    return "xpr,ymm-registers,non-alternating";
   case InstructionType::kYmmAddInstructionAlternating:
-    return "Ymm add instruction with alternating registers";
+    return "add,ymm-registers,alternating";
   case InstructionType::kYmmMovInstructionAlternating:
-    return "Ymm mov instruction with alternating registers";
+    return "mov,ymm-registers,alternating";
   case InstructionType::kYmmCmpInstructionAlternating:
-    return "Ymm cmp instruction with alternating registers";
+    return "cmp,ymm-registers,alternating";
   case InstructionType::kYmmXorInstructionAlternating:
-    return "Ymm xor instruction with alternating registers";
+    return "xor,ymm-registers,alternating";
   case InstructionType::kZmmAddInstruction:
-    return "Zmm add instruction without alternating registers";
+    return "add,zmm-registers,non-alternating";
   case InstructionType::kZmmMovInstruction:
-    return "Zmm mov instruction without alternating registers";
+    return "mov,zmm-registers,non-alternating";
   case InstructionType::kZmmCmpInstruction:
-    return "Zmm cmp instruction without alternating registers";
+    return "cmp,zmm-registers,non-alternating";
   case InstructionType::kZmmXorInstruction:
-    return "Zmm xor instruction without alternating registers";
+    return "xor,zmm-registers,non-alternating";
   case InstructionType::kZmmAddInstructionAlternating:
-    return "Zmm add instruction with alternating registers";
+    return "add,zmm-registers,alternating";
   case InstructionType::kZmmMovInstructionAlternating:
-    return "Zmm mov instruction with alternating registers";
+    return "mov,zmm-registers,alternating";
   case InstructionType::kZmmCmpInstructionAlternating:
-    return "Zmm cmp instruction with alternating registers";
+    return "cmp,zmm-registers,alternating";
   case InstructionType::kZmmXorInstructionAlternating:
-    return "Zmm xor instruction with alternating registers";
+    return "xor,zmm-registers,alternating";
   default:
     return "unknown";
   }

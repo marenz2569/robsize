@@ -66,10 +66,12 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
   createRandomLinkedListAccessPattern(Pointers1);
   createRandomLinkedListAccessPattern(Pointers2);
 
+  const auto& TestPtr = AvailableTests.at(TestId);
+
   // Do a warm up.
   {
-    auto Test = AvailableTests.at(TestId)->compileTest(10, /*InnerLoopRepetitions=*/InnerIterations,
-                                                       /*UnrollCount=*/Unroll, /*PrintAssembler=*/false);
+    auto Test = TestPtr->compileTest(10, /*InnerLoopRepetitions=*/InnerIterations,
+                                     /*UnrollCount=*/Unroll, /*PrintAssembler=*/false);
     for (auto I = 0; I < 10; I++) {
       Test->testFunction(Pointers1.data(), Pointers2.data());
     }
@@ -79,8 +81,8 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
 
   // Run the test for each number of filler instructions
   for (decltype(Start) InstructionCount = Start; InstructionCount <= Stop; InstructionCount++) {
-    auto Test = AvailableTests.at(TestId)->compileTest(InstructionCount, /*InnerLoopRepetitions=*/InnerIterations,
-                                                       /*UnrollCount=*/Unroll, /*PrintAssembler=*/false);
+    auto Test = TestPtr->compileTest(InstructionCount, /*InnerLoopRepetitions=*/InnerIterations,
+                                     /*UnrollCount=*/Unroll, /*PrintAssembler=*/false);
 
     uint64_t MinCyles = std::numeric_limits<uint64_t>::max();
     uint64_t MaxCycles = 0;
@@ -99,6 +101,7 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
     }
 
     RobsizeResult Result{.TestId = TestId,
+                         .TestName = TestPtr->name(),
                          .InstructionCount = InstructionCount,
                          .MinCycles = MinCyles,
                          .AverageCycles = TotalCycles / OuterIterations,

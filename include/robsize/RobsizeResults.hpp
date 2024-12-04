@@ -10,6 +10,7 @@ namespace robsize {
 
 struct RobsizeResult {
   unsigned TestId;
+  std::string TestName;
   unsigned InstructionCount;
   uint64_t MinCycles;
   uint64_t AverageCycles;
@@ -30,11 +31,11 @@ struct RobsizeResults {
       throw std::runtime_error("I/O error while writing CSV");
     }
 
-    Outfile << "TestId,InstructionCount,MinCycles,AverageCycles,MaxCycles\n";
+    Outfile << "TestId,TestName,InstructionCount,MinCycles,AverageCycles,MaxCycles\n";
 
     for (const auto& Entry : Results) {
-      Outfile << Entry.TestId << "," << Entry.InstructionCount << "," << Entry.MinCycles << "," << Entry.AverageCycles
-              << "," << Entry.MaxCycles << "\n";
+      Outfile << Entry.TestId << "," << Entry.TestName << "," << Entry.InstructionCount << "," << Entry.MinCycles << ","
+              << Entry.AverageCycles << "," << Entry.MaxCycles << "\n";
     }
   }
 };

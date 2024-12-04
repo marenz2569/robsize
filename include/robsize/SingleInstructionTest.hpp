@@ -51,16 +51,22 @@ private:
       switch (Type) {
       case InstructionType::kNopInstruction:
         Cb.nop();
+        break;
       case InstructionType::kTwoByteNopInstruction:
         Cb.xchg(CurrentGpRegister.r8Lo(), CurrentGpRegister.r8Lo());
+        break;
       case InstructionType::kAddInstruction:
         Cb.add(CurrentGpRegister, CurrentGpRegister);
+        break;
       case InstructionType::kMovInstruction:
         Cb.mov(CurrentGpRegister, CurrentGpRegister);
+        break;
       case InstructionType::kCmpInstruction:
         Cb.cmp(CurrentGpRegister, CurrentGpRegister);
+        break;
       case InstructionType::kXorInstruction:
         Cb.xor_(CurrentGpRegister, CurrentGpRegister);
+        break;
       }
     }
   }

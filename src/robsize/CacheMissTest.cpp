@@ -5,8 +5,8 @@
 
 namespace robsize {
 
-auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRepetitions, unsigned UnrollCount)
-    -> CompiledTest::UniquePtr {
+auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRepetitions, unsigned UnrollCount,
+                                bool PrintAssembler) -> CompiledTest::UniquePtr {
   asmjit::CodeHolder Code;
   Code.init(asmjit::Environment::host());
 
@@ -75,6 +75,10 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   Cb.emitEpilog(Frame);
 
   Cb.finalize();
+
+  if (PrintAssembler) {
+    printAssembler(Cb);
+  }
 
   auto LoopSize = Code.labelOffset(FunctionExit) - Code.labelOffset(LoopStart);
 

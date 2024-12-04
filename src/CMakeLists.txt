@@ -1,10 +1,17 @@
-add_executable(robsize
-    robsize/Main.cpp
+add_library(robsizecore STATIC
     robsize/Robsize.cpp
     robsize/CacheMissTest.cpp
     robsize/Config.cpp
     )
 
-target_link_libraries(robsize
+add_executable(robsize
+    robsize/Main.cpp
+    )
+
+target_link_libraries(robsizecore
     asmjit::asmjit
+    )
+
+target_link_libraries(robsize
+    robsizecore
     )

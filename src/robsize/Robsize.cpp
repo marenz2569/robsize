@@ -76,7 +76,7 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
   // Run the test for each number of filler instructions
   for (decltype(Start) InstructionCount = Start; InstructionCount <= Stop; InstructionCount++) {
     auto Test = AvailableTests.at(TestId)->compileTest(InstructionCount, /*InnerLoopRepetitions=*/InnerIterations,
-                                                       /*UnrollCount=*/Unroll);
+                                                       /*UnrollCount=*/Unroll, /*PrintAssembler=*/false);
 
     uint64_t MinCyles = std::numeric_limits<uint64_t>::max();
     uint64_t MaxCycles = 0;

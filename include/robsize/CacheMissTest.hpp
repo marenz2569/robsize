@@ -3,6 +3,7 @@
 #include "robsize/CompiledTest.hpp"
 
 #include <asmjit/asmjit.h>
+#include <iostream>
 #include <string>
 #include <utility>
 #include <vector>
@@ -28,7 +29,8 @@ public:
   /// \arg InstructionCount The number of filler instructions between the cache misses.
   /// \arg InnerLoopRepetitions The number of time the inner unrolled loop gets repeateadly executed.
   /// \arg UnrollCount The number of times the inner loop is unrolled
-  auto compileTest(unsigned InstructionCount, unsigned InnerLoopRepetitions, unsigned UnrollCount)
+  /// \arg PrintAssembler Print the generated assembler to stdout
+  auto compileTest(unsigned InstructionCount, unsigned InnerLoopRepetitions, unsigned UnrollCount, bool PrintAssembler)
       -> CompiledTest::UniquePtr;
 
 protected:
@@ -38,6 +40,17 @@ protected:
   /// \arg AvailableGpRegisters The general purpose registers which are available for the filler instructions to use.
   virtual void addFillerInstructions(asmjit::x86::Builder& Cb, unsigned InstructionCount,
                                      const std::vector<asmjit::x86::Gpq>& AvailableGpRegisters) = 0;
+
+private:
+  /// Print the generated assembler Code of asmjit
+  /// \arg Builder The builder that contains the assembler code.
+  static void printAssembler(asmjit::BaseBuilder& Builder) {
+    asmjit::String Sb;
+    asmjit::FormatOptions FormatOptions{};
+
+    asmjit::Formatter::formatNodeList(Sb, FormatOptions, &Builder);
+    std::cout << Sb.data();
+  }
 };
 
 } // namespace robsize

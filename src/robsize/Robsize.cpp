@@ -10,7 +10,8 @@
 
 namespace {
 
-constexpr const std::size_t AddressBufferSize = 16384;
+// 1 MiB
+constexpr const std::size_t AddressBufferSize = 1048576;
 
 void createRandomLinkedListAccessPattern(std::array<void*, AddressBufferSize>& Pointers) {
   // Write the address of each element to the pointer array and shuffle it around to create (ideally one) chains of
@@ -25,7 +26,7 @@ void createRandomLinkedListAccessPattern(std::array<void*, AddressBufferSize>& P
   std::shuffle(Pointers.begin(), Pointers.end(), Rng);
 }
 
-auto readTimestamp() -> uint64_t {
+inline auto readTimestamp() -> uint64_t {
   // NOLINTBEGIN(misc-const-correctness)
   uint64_t Rax = 0;
   uint64_t Rdx = 0;

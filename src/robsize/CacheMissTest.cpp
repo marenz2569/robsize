@@ -48,6 +48,9 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   // The actual code for the cache miss test
   Cb.mov(CounterReg, asmjit::Imm(InnerLoopRepetitions));
 
+  // Align code to 16B boundary
+  Cb.align(asmjit::AlignMode::kCode, 16);
+
   auto LoopStart = Cb.newLabel();
   Cb.bind(LoopStart);
 

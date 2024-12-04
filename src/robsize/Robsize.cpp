@@ -73,6 +73,15 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
   RobsizeResult Result;
   Result.TestId = TestId;
 
+  // Do a warm up.
+  {
+    auto Test = AvailableTests.at(TestId)->compileTest(10, /*InnerLoopRepetitions=*/InnerIterations,
+                                                       /*UnrollCount=*/Unroll, /*PrintAssembler=*/false);
+    for (auto I = 0; I < 10; I++) {
+      Test->testFunction(Pointers1.data(), Pointers2.data());
+    }
+  }
+
   // Run the test for each number of filler instructions
   for (decltype(Start) InstructionCount = Start; InstructionCount <= Stop; InstructionCount++) {
     auto Test = AvailableTests.at(TestId)->compileTest(InstructionCount, /*InnerLoopRepetitions=*/InnerIterations,

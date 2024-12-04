@@ -6,6 +6,8 @@ namespace robsize {
 
 // NOLINTNEXTLINE(performance-enum-size)
 enum class InstructionType {
+  kNopInstruction,
+  kTwoByteNopInstruction,
   kAddInstruction,
   kMovInstruction,
   kCmpInstruction,
@@ -14,6 +16,10 @@ enum class InstructionType {
 
 constexpr auto getName(enum InstructionType Type) -> const char* {
   switch (Type) {
+  case InstructionType::kNopInstruction:
+    return "Single byte Nop instruction";
+  case InstructionType::kTwoByteNopInstruction:
+    return "Two byte Nop instruction";
   case InstructionType::kAddInstruction:
     return "Add instruction without alternating registers";
   case InstructionType::kMovInstruction:
@@ -43,6 +49,10 @@ private:
       // Iterate over the available registers and emit the specified instruction acording to specified instruction type.
       const auto& CurrentGpRegister = AvailableGpRegisters.at(I % AvailableGpRegisters.size());
       switch (Type) {
+      case InstructionType::kNopInstruction:
+        Cb.nop();
+      case InstructionType::kTwoByteNopInstruction:
+        Cb.xchg(CurrentGpRegister.r8Lo(), CurrentGpRegister.r8Lo());
       case InstructionType::kAddInstruction:
         Cb.add(CurrentGpRegister, CurrentGpRegister);
       case InstructionType::kMovInstruction:

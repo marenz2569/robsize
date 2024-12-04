@@ -4,12 +4,13 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <limits>
 #include <random>
 #include <stdexcept>
 
 namespace {
 
-constexpr const std::size_t AddressBufferSize = 8192;
+constexpr const std::size_t AddressBufferSize = 16384;
 
 void createRandomLinkedListAccessPattern(std::array<void*, AddressBufferSize>& Pointers) {
   // Write the address of each element to the pointer array and shuffle it around to create (ideally one) chains of
@@ -74,12 +75,20 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned TestId) -> Rob
     auto Test =
         AvailableTests.at(TestId)->compileTest(InstructionCount, /*InnerLoopRepetitions=*/1024, /*UnrollCount=*/16);
 
-    // TODO: run multiple iterations.
-    auto StartCounter = readTimestamp();
-    Test->testFunction(Pointers1.data(), Pointers2.data());
-    auto StopCounter = readTimestamp();
+    uint64_t MinCyles = std::numeric_limits<uint64_t>::max();
+    uint64_t MaxCycles = 0;
 
-    Result.InstructionCountResults[InstructionCount] = InstructionCountResult{.Cycles = StopCounter - StartCounter};
+    for (auto I = 0; I < 16; I++) {
+      auto StartCounter = readTimestamp();
+      Test->testFunction(Pointers1.data(), Pointers2.data());
+      auto StopCounter = readTimestamp();
+      auto Cycles = StopCounter - StartCounter;
+      MinCyles = std::min(MinCyles, Cycles);
+      MaxCycles = std::max(MaxCycles, Cycles);
+    }
+
+    Result.InstructionCountResults[InstructionCount] =
+        InstructionCountResult{.MinCycles = MinCyles, .MaxCycles = MaxCycles};
   }
 
   return Result;

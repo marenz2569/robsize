@@ -11,7 +11,8 @@
 namespace robsize {
 
 struct InstructionCountResult {
-  uint64_t Cycles;
+  uint64_t MinCycles;
+  uint64_t MaxCycles;
 };
 
 struct RobsizeResult {
@@ -52,6 +53,8 @@ public:
 private:
   /// The available tests that can be used by robsize. The test index maps to the same element in this vector.
   std::vector<std::shared_ptr<CacheMissTest>> AvailableTests = {
+      std::make_shared<SingleInstructionTest<InstructionType::kNopInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kTwoByteNopInstruction>>(),
       std::make_shared<SingleInstructionTest<InstructionType::kAddInstruction>>(),
       std::make_shared<SingleInstructionTest<InstructionType::kMovInstruction>>(),
       std::make_shared<SingleInstructionTest<InstructionType::kCmpInstruction>>(),

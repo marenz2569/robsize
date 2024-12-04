@@ -1,6 +1,7 @@
 #pragma once
 
 #include <optional>
+#include <string>
 
 namespace robsize {
 
@@ -30,6 +31,9 @@ struct Config {
 
   /// Print the available tests with their names
   bool PrintTests;
+
+  /// The path where the output should be saved.
+  std::string OutfilePath;
 
   Config() = delete;
 

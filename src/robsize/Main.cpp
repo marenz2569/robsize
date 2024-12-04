@@ -44,12 +44,7 @@ auto main(int Argc, const char** Argv) -> int {
 
     auto Results = Robsize.runTests(Cfg);
 
-    for (const auto& Tests : Results.TestResults) {
-      std::cout << "Results for test: " << Tests.TestId << "\n";
-      for (const auto& [Key, Value] : Tests.InstructionCountResults) {
-        std::cout << Key << "," << Value.MinCycles << "," << Value.MaxCycles << "\n";
-      }
-    }
+    Results.saveCsv(Cfg.OutfilePath);
   } catch (std::exception const& E) {
     std::cerr << E.what();
     return EXIT_FAILURE;

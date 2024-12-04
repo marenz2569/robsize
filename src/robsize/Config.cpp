@@ -23,6 +23,7 @@ Config::Config(int Argc, const char** Argv)
     ("inner-iterations", "The number of iteration of the experiment loop", cxxopts::value<unsigned>()->default_value("2048"))
     ("outer-iterations", "The number of iterations used to average the result", cxxopts::value<unsigned>()->default_value("16"))
     ("testid", "The number of the test to execute. If this is not given all are executed", cxxopts::value<unsigned>())
+    ("outfile", "The path where the results should be saved to.", cxxopts::value<std::string>()->default_value("outfile.csv"))
   ;
   // clang-format on
 
@@ -41,6 +42,8 @@ Config::Config(int Argc, const char** Argv)
     UnrollCount = Options["unroll"].as<unsigned>();
     InnerIterations = Options["inner-iterations"].as<unsigned>();
     OuterIterations = Options["outer-iterations"].as<unsigned>();
+
+    OutfilePath = Options["outfile"].as<std::string>();
 
     if (Start > Stop) {
       throw std::runtime_error("The value supplied for --start is bigger than the value for --stop.");

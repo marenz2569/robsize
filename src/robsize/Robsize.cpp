@@ -40,21 +40,21 @@ auto RobsizeTest::runTests(const robsize::Config& Cfg) -> RobsizeResults {
   if (Cfg.TestId) {
     auto TestResult =
         runTest(Cfg.Start, Cfg.Stop, Cfg.UnrollCount, Cfg.InnerIterations, Cfg.OuterIterations, *Cfg.TestId);
-    return RobsizeResults(TestResult);
+    return RobsizeResults{.Results = TestResult};
   }
 
-  RobsizeResults Results;
+  std::vector<RobsizeResult> Results;
 
   for (auto I = 0; I < AvailableTests.size(); I++) {
-    auto TestResult = runTest(Cfg.Start, Cfg.Stop, Cfg.UnrollCount, Cfg.InnerIterations, Cfg.OuterIterations, I);
-    Results.TestResults.emplace_back(TestResult);
+    auto TestResults = runTest(Cfg.Start, Cfg.Stop, Cfg.UnrollCount, Cfg.InnerIterations, Cfg.OuterIterations, I);
+    Results.insert(Results.end(), TestResults.cbegin(), TestResults.cend());
   }
 
-  return Results;
+  return RobsizeResults{.Results = Results};
 }
 
 auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsigned InnerIterations,
-                          unsigned OuterIterations, unsigned TestId) -> RobsizeResult {
+                          unsigned OuterIterations, unsigned TestId) -> std::vector<RobsizeResult> {
   if (TestId >= AvailableTests.size()) {
     throw std::runtime_error("The selected test number is not available");
   }
@@ -66,9 +66,6 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
   createRandomLinkedListAccessPattern(Pointers1);
   createRandomLinkedListAccessPattern(Pointers2);
 
-  RobsizeResult Result;
-  Result.TestId = TestId;
-
   // Do a warm up.
   {
     auto Test = AvailableTests.at(TestId)->compileTest(10, /*InnerLoopRepetitions=*/InnerIterations,
@@ -77,6 +74,8 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
       Test->testFunction(Pointers1.data(), Pointers2.data());
     }
   }
+
+  std::vector<RobsizeResult> Results;
 
   // Run the test for each number of filler instructions
   for (decltype(Start) InstructionCount = Start; InstructionCount <= Stop; InstructionCount++) {
@@ -99,11 +98,16 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
       TotalCycles += Cycles;
     }
 
-    Result.InstructionCountResults[InstructionCount] = InstructionCountResult{
-        .MinCycles = MinCyles, .AverageCycles = TotalCycles / OuterIterations, .MaxCycles = MaxCycles};
+    RobsizeResult Result{.TestId = TestId,
+                         .InstructionCount = InstructionCount,
+                         .MinCycles = MinCyles,
+                         .AverageCycles = TotalCycles / OuterIterations,
+                         .MaxCycles = MaxCycles};
+
+    Results.emplace_back(Result);
   }
 
-  return Result;
+  return Results;
 }
 
 } // namespace robsize

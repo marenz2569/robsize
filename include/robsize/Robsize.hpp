@@ -2,38 +2,13 @@
 
 #include "robsize/CacheMissTest.hpp"
 #include "robsize/Config.hpp"
+#include "robsize/RobsizeResults.hpp"
 #include "robsize/SingleInstructionTest.hpp"
-
-#include <map>
-#include <memory>
-#include <vector>
 
 namespace robsize {
 
 // 1 MiB
 constexpr const std::size_t AddressBufferSize = 1048576;
-
-struct InstructionCountResult {
-  uint64_t MinCycles;
-  uint64_t AverageCycles;
-  uint64_t MaxCycles;
-};
-
-struct RobsizeResult {
-  unsigned TestId;
-  std::map<unsigned, InstructionCountResult> InstructionCountResults;
-};
-
-struct RobsizeResults {
-  RobsizeResults() = default;
-
-  explicit RobsizeResults(const RobsizeResult& Result) {
-    RobsizeResults Results{};
-    TestResults.emplace_back(Result);
-  }
-
-  std::vector<RobsizeResult> TestResults;
-};
 
 class RobsizeTest {
 public:
@@ -51,7 +26,7 @@ public:
   /// \arg OuterIterations The number of iterations used to average the result
   /// \arg TestId The id of the test that should be executed
   [[nodiscard]] auto runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsigned InnerIterations,
-                             unsigned OuterIterations, unsigned TestId) -> RobsizeResult;
+                             unsigned OuterIterations, unsigned TestId) -> std::vector<RobsizeResult>;
 
   /// Const getter for the tests
   [[nodiscard]] auto avaialableTests() const -> const std::vector<std::shared_ptr<CacheMissTest>>& {

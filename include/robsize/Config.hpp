@@ -29,6 +29,8 @@ struct Config {
   /// The number of iterations used to average the result
   unsigned OuterIterations;
 
+  std::size_t CpuIndex;
+
   /// Print the available tests with their names
   bool PrintTests;
 

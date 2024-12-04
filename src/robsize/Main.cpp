@@ -17,6 +17,18 @@ void checkStackSize() {
   }
 }
 
+/// Set the affinity to the supplied os cpu index.
+/// \arg Cpu The cpu index to which this thread should be bound to.
+void setAffinity(std::size_t Cpu) {
+  pthread_t Thread = pthread_self();
+  cpu_set_t Cpus;
+
+  CPU_ZERO(&Cpus);
+  CPU_SET(Cpu, &Cpus);
+
+  pthread_setaffinity_np(Thread, sizeof(Cpus), &Cpus);
+}
+
 } // namespace
 
 auto main(int Argc, const char** Argv) -> int {
@@ -41,6 +53,8 @@ auto main(int Argc, const char** Argv) -> int {
     }
 
     checkStackSize();
+
+    setAffinity(Cfg.CpuIndex);
 
     auto Results = Robsize.runTests(Cfg);
 

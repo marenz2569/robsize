@@ -1,5 +1,6 @@
 #include "robsize/Config.hpp"
 
+#include <cstddef>
 #include <cstdlib>
 #include <cxxopts.hpp>
 #include <iostream>
@@ -24,6 +25,7 @@ Config::Config(int Argc, const char** Argv)
     ("outer-iterations", "The number of iterations used to average the result", cxxopts::value<unsigned>()->default_value("16"))
     ("testid", "The number of the test to execute. If this is not given all are executed", cxxopts::value<unsigned>())
     ("outfile", "The path where the results should be saved to.", cxxopts::value<std::string>()->default_value("outfile.csv"))
+    ("cpu-index", "The os index to which the experiment thread should be bound.", cxxopts::value<std::size_t>()->default_value("0"))
   ;
   // clang-format on
 
@@ -42,6 +44,8 @@ Config::Config(int Argc, const char** Argv)
     UnrollCount = Options["unroll"].as<unsigned>();
     InnerIterations = Options["inner-iterations"].as<unsigned>();
     OuterIterations = Options["outer-iterations"].as<unsigned>();
+
+    CpuIndex = Options["cpu-index"].as<std::size_t>();
 
     OutfilePath = Options["outfile"].as<std::string>();
 

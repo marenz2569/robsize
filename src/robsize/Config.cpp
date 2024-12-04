@@ -19,6 +19,9 @@ Config::Config(int Argc, const char** Argv)
     ("l,list", "List the available tests")
     ("start", "The minimal number of filler instructions", cxxopts::value<unsigned>()->default_value("16"))
     ("stop", "The maximum number of filler instructions", cxxopts::value<unsigned>()->default_value("1024"))
+    ("unroll", "The number of unrolls of the experiment loop", cxxopts::value<unsigned>()->default_value("16"))
+    ("inner-iterations", "The number of iteration of the experiment loop", cxxopts::value<unsigned>()->default_value("2048"))
+    ("outer-iterations", "The number of iterations used to average the result", cxxopts::value<unsigned>()->default_value("16"))
     ("testid", "The number of the test to execute. If this is not given all are executed", cxxopts::value<unsigned>())
   ;
   // clang-format on
@@ -34,6 +37,10 @@ Config::Config(int Argc, const char** Argv)
 
     Start = Options["start"].as<unsigned>();
     Stop = Options["stop"].as<unsigned>();
+
+    UnrollCount = Options["unroll"].as<unsigned>();
+    InnerIterations = Options["inner-iterations"].as<unsigned>();
+    OuterIterations = Options["outer-iterations"].as<unsigned>();
 
     if (Start > Stop) {
       throw std::runtime_error("The value supplied for --start is bigger than the value for --stop.");

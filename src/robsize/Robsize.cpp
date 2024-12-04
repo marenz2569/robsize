@@ -55,7 +55,8 @@ auto RobsizeTest::runTests(const robsize::Config& Cfg) -> RobsizeResults {
   return Results;
 }
 
-auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned TestId) -> RobsizeResult {
+auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsigned InnerIterations,
+                          unsigned OuterIterations, unsigned TestId) -> RobsizeResult {
   if (TestId >= AvailableTests.size()) {
     throw std::runtime_error("The selected test number is not available");
   }
@@ -72,23 +73,27 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned TestId) -> Rob
 
   // Run the test for each number of filler instructions
   for (decltype(Start) InstructionCount = Start; InstructionCount <= Stop; InstructionCount++) {
-    auto Test =
-        AvailableTests.at(TestId)->compileTest(InstructionCount, /*InnerLoopRepetitions=*/1024, /*UnrollCount=*/16);
+    auto Test = AvailableTests.at(TestId)->compileTest(InstructionCount, /*InnerLoopRepetitions=*/InnerIterations,
+                                                       /*UnrollCount=*/Unroll);
 
     uint64_t MinCyles = std::numeric_limits<uint64_t>::max();
     uint64_t MaxCycles = 0;
+    uint64_t TotalCycles = 0;
 
-    for (auto I = 0; I < 16; I++) {
+    for (auto I = 0U; I < OuterIterations; I++) {
       auto StartCounter = readTimestamp();
       Test->testFunction(Pointers1.data(), Pointers2.data());
       auto StopCounter = readTimestamp();
+
       auto Cycles = StopCounter - StartCounter;
+
       MinCyles = std::min(MinCyles, Cycles);
       MaxCycles = std::max(MaxCycles, Cycles);
+      TotalCycles += Cycles;
     }
 
-    Result.InstructionCountResults[InstructionCount] =
-        InstructionCountResult{.MinCycles = MinCyles, .MaxCycles = MaxCycles};
+    Result.InstructionCountResults[InstructionCount] = InstructionCountResult{
+        .MinCycles = MinCyles, .AverageCycles = TotalCycles / OuterIterations, .MaxCycles = MaxCycles};
   }
 
   return Result;

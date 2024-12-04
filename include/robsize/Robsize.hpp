@@ -12,6 +12,7 @@ namespace robsize {
 
 struct InstructionCountResult {
   uint64_t MinCycles;
+  uint64_t AverageCycles;
   uint64_t MaxCycles;
 };
 
@@ -42,8 +43,12 @@ public:
   /// Run a specific robsize test
   /// \arg Start The minimum number of filler instructions that will be used to test the robsize.
   /// \arg Stop The maximum number of filler instructions that will be used to test the robsize.
+  /// \arg Unroll The number of unrolls of the experiment loop
+  /// \arg InnerIterations The number of iteration of the experiment loop
+  /// \arg OuterIterations The number of iterations used to average the result
   /// \arg TestId The id of the test that should be executed
-  [[nodiscard]] auto runTest(unsigned Start, unsigned Stop, unsigned TestId) -> RobsizeResult;
+  [[nodiscard]] auto runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsigned InnerIterations,
+                             unsigned OuterIterations, unsigned TestId) -> RobsizeResult;
 
   /// Const getter for the tests
   [[nodiscard]] auto avaialableTests() const -> const std::vector<std::shared_ptr<CacheMissTest>>& {

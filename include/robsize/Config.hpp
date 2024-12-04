@@ -19,6 +19,15 @@ struct Config {
   /// The maximum number of filler instructions that will be used to test the robsize.
   unsigned Stop;
 
+  /// The number of unrolls of the experiment loop
+  unsigned UnrollCount;
+
+  /// The number of iteration of the experiment loop
+  unsigned InnerIterations;
+
+  /// The number of iterations used to average the result
+  unsigned OuterIterations;
+
   /// Print the available tests with their names
   bool PrintTests;
 

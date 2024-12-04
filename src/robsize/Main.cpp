@@ -3,6 +3,21 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <stdexcept>
+#include <sys/resource.h>
+
+namespace {
+
+void checkStackSize() {
+  struct rlimit Limit {};
+  getrlimit(RLIMIT_STACK, &Limit);
+  if (Limit.rlim_cur < 2048 * robsize::AddressBufferSize) {
+    throw std::runtime_error(
+        "The stack size is too small, increase it or set it to unlimited with: ulimit -s unlimited\n");
+  }
+}
+
+} // namespace
 
 auto main(int Argc, const char** Argv) -> int {
   std::cout << "robsize - Microarchitectural benchmark to measure the reorder buffer size based on the methodoly "
@@ -24,6 +39,8 @@ auto main(int Argc, const char** Argv) -> int {
       }
       return EXIT_SUCCESS;
     }
+
+    checkStackSize();
 
     auto Results = Robsize.runTests(Cfg);
 

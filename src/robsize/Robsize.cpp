@@ -10,10 +10,7 @@
 
 namespace {
 
-// 1 MiB
-constexpr const std::size_t AddressBufferSize = 1048576;
-
-void createRandomLinkedListAccessPattern(std::array<void*, AddressBufferSize>& Pointers) {
+void createRandomLinkedListAccessPattern(std::array<void*, robsize::AddressBufferSize>& Pointers) {
   // Write the address of each element to the pointer array and shuffle it around to create (ideally one) chains of
   // pointers. Increment the AddressBufferSize to a number big enough to create a long enough chain.
   for (auto& Elem : Pointers) {

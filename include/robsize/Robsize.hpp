@@ -10,6 +10,9 @@
 
 namespace robsize {
 
+// 1 MiB
+constexpr const std::size_t AddressBufferSize = 1048576;
+
 struct InstructionCountResult {
   uint64_t MinCycles;
   uint64_t AverageCycles;

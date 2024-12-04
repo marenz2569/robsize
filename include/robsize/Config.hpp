@@ -19,6 +19,9 @@ struct Config {
   /// The maximum number of filler instructions that will be used to test the robsize.
   unsigned Stop;
 
+  /// Print the available tests with their names
+  bool PrintTests;
+
   Config() = delete;
 
   /// Parser the config from the command line argumens.

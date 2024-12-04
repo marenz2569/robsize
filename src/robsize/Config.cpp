@@ -1,5 +1,6 @@
 #include "robsize/Config.hpp"
 
+#include <cstdlib>
 #include <cxxopts.hpp>
 #include <iostream>
 #include <stdexcept>
@@ -25,6 +26,8 @@ Config::Config(int Argc, const char** Argv)
   try {
     auto Options = Parser.parse(Argc, Argv);
 
+    PrintTests = Options.contains("list");
+
     if (Options.contains("testid")) {
       TestId = Options["testid"].as<unsigned>();
     }
@@ -38,6 +41,8 @@ Config::Config(int Argc, const char** Argv)
   } catch (std::exception& E) {
     std::cerr << Parser.help() << "\n";
     std::cerr << "\n";
+    // NOLINTNEXTLINE(concurrency-mt-unsafe)
+    exit(EXIT_SUCCESS);
   }
 }
 

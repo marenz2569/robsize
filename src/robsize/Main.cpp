@@ -1,4 +1,5 @@
 #include "robsize/Config.hpp"
+#include "robsize/Robsize.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -12,6 +13,26 @@ auto main(int Argc, const char** Argv) -> int {
 
   try {
     robsize::Config Cfg{Argc, Argv};
+
+    robsize::RobsizeTest Robsize;
+
+    if (Cfg.PrintTests) {
+      std::cout << "Index TestName\n";
+      auto I = 0U;
+      for (const auto& Test : Robsize.avaialableTests()) {
+        std::cout << I++ << " " << Test->name() << "\n";
+      }
+      return EXIT_SUCCESS;
+    }
+
+    auto Results = Robsize.runTests(Cfg);
+
+    for (const auto& Tests : Results.TestResults) {
+      std::cout << "Results for test: " << Tests.TestId << "\n";
+      for (const auto& [Key, Value] : Tests.InstructionCountResults) {
+        std::cout << Key << "," << Value.Cycles << "\n";
+      }
+    }
   } catch (std::exception const& E) {
     std::cerr << E.what();
     return EXIT_FAILURE;

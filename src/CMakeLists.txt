@@ -1,5 +1,7 @@
 add_executable(robsize
     robsize/Main.cpp
+    robsize/Robsize.cpp
+    robsize/CacheMissTest.cpp
     robsize/Config.cpp
     )
 

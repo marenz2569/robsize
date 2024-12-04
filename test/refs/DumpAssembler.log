@@ -1,0 +1,360 @@
+Single byte Nop instruction
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+.align 16 (code)
+L0:
+mov rax, [rax]
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+Two byte Nop instruction
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+.align 16 (code)
+L0:
+mov rax, [rax]
+xchg r8b, r8b
+xchg r9b, r9b
+xchg r10b, r10b
+xchg r11b, r11b
+xchg r12b, r12b
+xchg r13b, r13b
+xchg r14b, r14b
+xchg r15b, r15b
+xchg dil, dil
+xchg sil, sil
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xchg r8b, r8b
+xchg r9b, r9b
+xchg r10b, r10b
+xchg r11b, r11b
+xchg r12b, r12b
+xchg r13b, r13b
+xchg r14b, r14b
+xchg r15b, r15b
+xchg dil, dil
+xchg sil, sil
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xchg r8b, r8b
+xchg r9b, r9b
+xchg r10b, r10b
+xchg r11b, r11b
+xchg r12b, r12b
+xchg r13b, r13b
+xchg r14b, r14b
+xchg r15b, r15b
+xchg dil, dil
+xchg sil, sil
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+Add instruction without alternating registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+.align 16 (code)
+L0:
+mov rax, [rax]
+add r8, r8
+add r9, r9
+add r10, r10
+add r11, r11
+add r12, r12
+add r13, r13
+add r14, r14
+add r15, r15
+add rdi, rdi
+add rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+add r8, r8
+add r9, r9
+add r10, r10
+add r11, r11
+add r12, r12
+add r13, r13
+add r14, r14
+add r15, r15
+add rdi, rdi
+add rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+add r8, r8
+add r9, r9
+add r10, r10
+add r11, r11
+add r12, r12
+add r13, r13
+add r14, r14
+add r15, r15
+add rdi, rdi
+add rsi, rsi
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+Mov instruction without alternating registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov r8, r8
+mov r9, r9
+mov r10, r10
+mov r11, r11
+mov r12, r12
+mov r13, r13
+mov r14, r14
+mov r15, r15
+mov rdi, rdi
+mov rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov r8, r8
+mov r9, r9
+mov r10, r10
+mov r11, r11
+mov r12, r12
+mov r13, r13
+mov r14, r14
+mov r15, r15
+mov rdi, rdi
+mov rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov r8, r8
+mov r9, r9
+mov r10, r10
+mov r11, r11
+mov r12, r12
+mov r13, r13
+mov r14, r14
+mov r15, r15
+mov rdi, rdi
+mov rsi, rsi
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+Cmp instruction without alternating registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+.align 16 (code)
+L0:
+mov rax, [rax]
+cmp r8, r8
+cmp r9, r9
+cmp r10, r10
+cmp r11, r11
+cmp r12, r12
+cmp r13, r13
+cmp r14, r14
+cmp r15, r15
+cmp rdi, rdi
+cmp rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmp r8, r8
+cmp r9, r9
+cmp r10, r10
+cmp r11, r11
+cmp r12, r12
+cmp r13, r13
+cmp r14, r14
+cmp r15, r15
+cmp rdi, rdi
+cmp rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmp r8, r8
+cmp r9, r9
+cmp r10, r10
+cmp r11, r11
+cmp r12, r12
+cmp r13, r13
+cmp r14, r14
+cmp r15, r15
+cmp rdi, rdi
+cmp rsi, rsi
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+Xor instruction without alternating registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+.align 16 (code)
+L0:
+mov rax, [rax]
+xor r8, r8
+xor r9, r9
+xor r10, r10
+xor r11, r11
+xor r12, r12
+xor r13, r13
+xor r14, r14
+xor r15, r15
+xor rdi, rdi
+xor rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xor r8, r8
+xor r9, r9
+xor r10, r10
+xor r11, r11
+xor r12, r12
+xor r13, r13
+xor r14, r14
+xor r15, r15
+xor rdi, rdi
+xor rsi, rsi
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xor r8, r8
+xor r9, r9
+xor r10, r10
+xor r11, r11
+xor r12, r12
+xor r13, r13
+xor r14, r14
+xor r15, r15
+xor rdi, rdi
+xor rsi, rsi
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret

@@ -41,14 +41,15 @@ namespace robsize {
 auto RobsizeTest::runTests(const robsize::Config& Cfg) -> RobsizeResults {
   // Run a single selected test
   if (Cfg.TestId) {
-    auto TestResult = runTest(Cfg.Start, Cfg.Stop, *Cfg.TestId);
+    auto TestResult =
+        runTest(Cfg.Start, Cfg.Stop, Cfg.UnrollCount, Cfg.InnerIterations, Cfg.OuterIterations, *Cfg.TestId);
     return RobsizeResults(TestResult);
   }
 
   RobsizeResults Results;
 
   for (auto I = 0; I < AvailableTests.size(); I++) {
-    auto TestResult = runTest(Cfg.Start, Cfg.Stop, I);
+    auto TestResult = runTest(Cfg.Start, Cfg.Stop, Cfg.UnrollCount, Cfg.InnerIterations, Cfg.OuterIterations, I);
     Results.TestResults.emplace_back(TestResult);
   }
 

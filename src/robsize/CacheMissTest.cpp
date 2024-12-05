@@ -19,13 +19,16 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   const auto PointerReg2 = asmjit::x86::rbx;
   const auto CounterReg = asmjit::x86::rcx;
   const auto StackAlignmentCount = asmjit::x86::rdx;
+  // We do not need the following registers in/after the loop
+  const auto VectorRegisterData = asmjit::x86::r8;
 
   const std::vector<asmjit::x86::Gpq> AvailableGpRegisters = {
       asmjit::x86::r8,  asmjit::x86::r9,  asmjit::x86::r10, asmjit::x86::r11, asmjit::x86::r12,
       asmjit::x86::r13, asmjit::x86::r14, asmjit::x86::r15, asmjit::x86::rdi, asmjit::x86::rsi};
 
   asmjit::FuncDetail Func;
-  Func.init(asmjit::FuncSignature::build<void, void**, void**>(asmjit::CallConvId::kCDecl), Code.environment());
+  Func.init(asmjit::FuncSignature::build<void, void**, void**, const double*>(asmjit::CallConvId::kCDecl),
+            Code.environment());
 
   asmjit::FuncFrame Frame;
   Frame.init(Func);
@@ -40,7 +43,7 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   }
 
   asmjit::FuncArgsAssignment Args(&Func);
-  Args.assignAll(PointerReg1, PointerReg2);
+  Args.assignAll(PointerReg1, PointerReg2, VectorRegisterData);
   Args.updateFuncFrame(Frame);
   Frame.finalize();
 
@@ -59,6 +62,11 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
 
   // Allocate some stack which is usable by the filler instructions
   Cb.sub(asmjit::x86::rsp, asmjit::Imm(requiredStackSize()));
+
+  // Initialize the vector registers
+  for (auto I = 0; I < 32; I++) {
+    Cb.vmovapd(asmjit::x86::Zmm(I), zmmword_ptr(VectorRegisterData, I * 64));
+  }
 
   // Align code to 16B boundary
   Cb.align(asmjit::AlignMode::kCode, 16);

@@ -66,6 +66,17 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
   createRandomLinkedListAccessPattern(Pointers1);
   createRandomLinkedListAccessPattern(Pointers2);
 
+  std::array<double, 128> VectorRegisterContent{};
+  {
+    std::random_device Rd;
+    std::mt19937 Rng(Rd());
+    std::uniform_real_distribution<> Distribution(-1.0, 1.0);
+
+    for (auto& Double : VectorRegisterContent) {
+      Double = Distribution(Rng);
+    }
+  }
+
   const auto& TestPtr = AvailableTests.at(TestId);
 
   // Do a warm up.
@@ -73,7 +84,7 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
     auto Test = TestPtr->compileTest(10, /*InnerLoopRepetitions=*/InnerIterations,
                                      /*UnrollCount=*/Unroll, /*PrintAssembler=*/false);
     for (auto I = 0; I < 10; I++) {
-      Test->testFunction(Pointers1.data(), Pointers2.data());
+      Test->testFunction(Pointers1.data(), Pointers2.data(), VectorRegisterContent);
     }
   }
 
@@ -90,7 +101,7 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
 
     for (auto I = 0U; I < OuterIterations; I++) {
       auto StartCounter = readTimestamp();
-      Test->testFunction(Pointers1.data(), Pointers2.data());
+      Test->testFunction(Pointers1.data(), Pointers2.data(), VectorRegisterContent);
       auto StopCounter = readTimestamp();
 
       auto Cycles = StopCounter - StartCounter;

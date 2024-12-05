@@ -19,7 +19,7 @@ public:
   using UniquePtr = std::unique_ptr<CompiledTest, void (*)(CompiledTest*)>;
 
   /// The function take two arrays of pointers (linked lists).
-  using TestFunctionPtr = void (*)(void**, void**);
+  using TestFunctionPtr = void (*)(void**, void**, const double*);
 
   /// Create an executable test from generated assembler code.
   /// \arg Stats The stats of the test that is generated from the assembler code.
@@ -38,7 +38,13 @@ public:
   /// Getter for the stats of compiled test.
   [[nodiscard]] auto stats() const -> const TestStats& { return Stats; };
 
-  void testFunction(void** LinkedList1, void** LinkedList2) const { TestFunction(LinkedList1, LinkedList2); }
+  /// Run the test
+  /// \arg LinkedList1 The first linked list that is used to generate cache misses.
+  /// \arg LinkedList2 The second linked list that is used to generate cache misses.
+  /// \arg VectorData The data that is used to fill the Zmm registers.
+  void testFunction(void** LinkedList1, void** LinkedList2, const std::array<double, 128>& VectorData) const {
+    TestFunction(LinkedList1, LinkedList2, VectorData.data());
+  }
 
 private:
   /// Constructor for the CompiledPayload.

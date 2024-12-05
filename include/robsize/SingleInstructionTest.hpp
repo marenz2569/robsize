@@ -87,7 +87,7 @@ constexpr auto getName(enum InstructionType Type) -> const char* {
   case InstructionType::kYmmCmpInstruction:
     return "cmp;ymm-registers;non-alternating";
   case InstructionType::kYmmXorInstruction:
-    return "xpr;ymm-registers;non-alternating";
+    return "xor;ymm-registers;non-alternating";
   case InstructionType::kYmmAddInstructionAlternating:
     return "add;ymm-registers;alternating";
   case InstructionType::kYmmMovInstructionAlternating:

@@ -52,19 +52,9 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
 
   // Align the stack to 64B boundary
   {
-    Cb.mov(StackAlignmentCount, asmjit::Imm(0));
-
-    auto AlignLoopStart = Cb.newLabel();
-    auto AlignLoopEnd = Cb.newLabel();
-    Cb.bind(AlignLoopStart);
-
-    Cb.test(asmjit::x86::rsp, asmjit::Imm(64));
-    Cb.jz(AlignLoopEnd);
-    Cb.sub(asmjit::x86::rsp, asmjit::Imm(8));
-    Cb.add(StackAlignmentCount, asmjit::Imm(1));
-    Cb.jmp(AlignLoopStart);
-
-    Cb.bind(AlignLoopEnd);
+    Cb.mov(StackAlignmentCount, asmjit::x86::rsp);
+    Cb.and_(StackAlignmentCount, asmjit::Imm(0x3f));
+    Cb.sub(asmjit::x86::rsp, StackAlignmentCount);
   }
 
   // Allocate some stack which is usable by the filler instructions
@@ -95,18 +85,7 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   Cb.bind(LoopExit);
 
   // Restore the stack
-  {
-    auto AlignLoopStart = Cb.newLabel();
-    auto AlignLoopEnd = Cb.newLabel();
-    Cb.bind(AlignLoopStart);
-
-    Cb.cmp(StackAlignmentCount, asmjit::Imm(0));
-    Cb.je(AlignLoopEnd);
-    Cb.add(asmjit::x86::rsp, asmjit::Imm(8));
-    Cb.sub(StackAlignmentCount, asmjit::Imm(1));
-
-    Cb.bind(AlignLoopEnd);
-  }
+  Cb.add(asmjit::x86::rsp, StackAlignmentCount);
 
   Cb.add(asmjit::x86::rsp, asmjit::Imm(requiredStackSize()));
 

@@ -1,4 +1,4 @@
-Single byte Nop instruction
+nop;single-byte
 .section .text
 push rbx
 push r12
@@ -8,6 +8,10 @@ push r15
 mov rax, rdi
 mov rbx, rsi
 mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -52,13 +56,16 @@ lfence
 sub rcx, 1
 jnz L0
 L1:
+add rsp, rdx
+add rsp, 0
 pop r15
 pop r14
 pop r13
 pop r12
 pop rbx
 ret
-Two byte Nop instruction
+
+nop;two-byte
 .section .text
 push rbx
 push r12
@@ -68,6 +75,10 @@ push r15
 mov rax, rdi
 mov rbx, rsi
 mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -112,13 +123,16 @@ lfence
 sub rcx, 1
 jnz L0
 L1:
+add rsp, rdx
+add rsp, 0
 pop r15
 pop r14
 pop r13
 pop r12
 pop rbx
 ret
-Add instruction without alternating registers
+
+add;gp-registers;non-alternating
 .section .text
 push rbx
 push r12
@@ -128,6 +142,10 @@ push r15
 mov rax, rdi
 mov rbx, rsi
 mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -172,13 +190,16 @@ lfence
 sub rcx, 1
 jnz L0
 L1:
+add rsp, rdx
+add rsp, 0
 pop r15
 pop r14
 pop r13
 pop r12
 pop rbx
 ret
-Mov instruction without alternating registers
+
+mov;gp-registers;non-alternating
 .section .text
 push rbx
 push r12
@@ -188,6 +209,10 @@ push r15
 mov rax, rdi
 mov rbx, rsi
 mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -232,13 +257,16 @@ lfence
 sub rcx, 1
 jnz L0
 L1:
+add rsp, rdx
+add rsp, 0
 pop r15
 pop r14
 pop r13
 pop r12
 pop rbx
 ret
-Cmp instruction without alternating registers
+
+cmp;gp-registers;non-alternating
 .section .text
 push rbx
 push r12
@@ -248,6 +276,10 @@ push r15
 mov rax, rdi
 mov rbx, rsi
 mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -292,13 +324,16 @@ lfence
 sub rcx, 1
 jnz L0
 L1:
+add rsp, rdx
+add rsp, 0
 pop r15
 pop r14
 pop r13
 pop r12
 pop rbx
 ret
-Xor instruction without alternating registers
+
+xor;gp-registers;non-alternating
 .section .text
 push rbx
 push r12
@@ -308,6 +343,10 @@ push r15
 mov rax, rdi
 mov rbx, rsi
 mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -352,9 +391,2244 @@ lfence
 sub rcx, 1
 jnz L0
 L1:
+add rsp, rdx
+add rsp, 0
 pop r15
 pop r14
 pop r13
 pop r12
 pop rbx
 ret
+
+add;gp-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+add r8, r9
+add r9, r10
+add r10, r11
+add r11, r12
+add r12, r13
+add r13, r14
+add r14, r15
+add r15, rdi
+add rdi, rsi
+add rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+add r8, r9
+add r9, r10
+add r10, r11
+add r11, r12
+add r12, r13
+add r13, r14
+add r14, r15
+add r15, rdi
+add rdi, rsi
+add rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+add r8, r9
+add r9, r10
+add r10, r11
+add r11, r12
+add r12, r13
+add r13, r14
+add r14, r15
+add r15, rdi
+add rdi, rsi
+add rsi, r8
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+mov;gp-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov r8, r9
+mov r9, r10
+mov r10, r11
+mov r11, r12
+mov r12, r13
+mov r13, r14
+mov r14, r15
+mov r15, rdi
+mov rdi, rsi
+mov rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov r8, r9
+mov r9, r10
+mov r10, r11
+mov r11, r12
+mov r12, r13
+mov r13, r14
+mov r14, r15
+mov r15, rdi
+mov rdi, rsi
+mov rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov r8, r9
+mov r9, r10
+mov r10, r11
+mov r11, r12
+mov r12, r13
+mov r13, r14
+mov r14, r15
+mov r15, rdi
+mov rdi, rsi
+mov rsi, r8
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+cmp;gp-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+cmp r8, r9
+cmp r9, r10
+cmp r10, r11
+cmp r11, r12
+cmp r12, r13
+cmp r13, r14
+cmp r14, r15
+cmp r15, rdi
+cmp rdi, rsi
+cmp rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmp r8, r9
+cmp r9, r10
+cmp r10, r11
+cmp r11, r12
+cmp r12, r13
+cmp r13, r14
+cmp r14, r15
+cmp r15, rdi
+cmp rdi, rsi
+cmp rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmp r8, r9
+cmp r9, r10
+cmp r10, r11
+cmp r11, r12
+cmp r12, r13
+cmp r13, r14
+cmp r14, r15
+cmp r15, rdi
+cmp rdi, rsi
+cmp rsi, r8
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+xor;gp-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+xor r8, r9
+xor r9, r10
+xor r10, r11
+xor r11, r12
+xor r12, r13
+xor r13, r14
+xor r14, r15
+xor r15, rdi
+xor rdi, rsi
+xor rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xor r8, r9
+xor r9, r10
+xor r10, r11
+xor r11, r12
+xor r12, r13
+xor r13, r14
+xor r14, r15
+xor r15, rdi
+xor rdi, rsi
+xor rsi, r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xor r8, r9
+xor r9, r10
+xor r10, r11
+xor r11, r12
+xor r12, r13
+xor r13, r14
+xor r14, r15
+xor r15, rdi
+xor rdi, rsi
+xor rsi, r8
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+add;xmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+addpd xmm0, xmm0
+addpd xmm1, xmm1
+addpd xmm2, xmm2
+addpd xmm3, xmm3
+addpd xmm4, xmm4
+addpd xmm5, xmm5
+addpd xmm6, xmm6
+addpd xmm7, xmm7
+addpd xmm8, xmm8
+addpd xmm9, xmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+addpd xmm0, xmm0
+addpd xmm1, xmm1
+addpd xmm2, xmm2
+addpd xmm3, xmm3
+addpd xmm4, xmm4
+addpd xmm5, xmm5
+addpd xmm6, xmm6
+addpd xmm7, xmm7
+addpd xmm8, xmm8
+addpd xmm9, xmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+addpd xmm0, xmm0
+addpd xmm1, xmm1
+addpd xmm2, xmm2
+addpd xmm3, xmm3
+addpd xmm4, xmm4
+addpd xmm5, xmm5
+addpd xmm6, xmm6
+addpd xmm7, xmm7
+addpd xmm8, xmm8
+addpd xmm9, xmm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+mov;xmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+movdqa xmm0, xmm0
+movdqa xmm1, xmm1
+movdqa xmm2, xmm2
+movdqa xmm3, xmm3
+movdqa xmm4, xmm4
+movdqa xmm5, xmm5
+movdqa xmm6, xmm6
+movdqa xmm7, xmm7
+movdqa xmm8, xmm8
+movdqa xmm9, xmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+movdqa xmm0, xmm0
+movdqa xmm1, xmm1
+movdqa xmm2, xmm2
+movdqa xmm3, xmm3
+movdqa xmm4, xmm4
+movdqa xmm5, xmm5
+movdqa xmm6, xmm6
+movdqa xmm7, xmm7
+movdqa xmm8, xmm8
+movdqa xmm9, xmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+movdqa xmm0, xmm0
+movdqa xmm1, xmm1
+movdqa xmm2, xmm2
+movdqa xmm3, xmm3
+movdqa xmm4, xmm4
+movdqa xmm5, xmm5
+movdqa xmm6, xmm6
+movdqa xmm7, xmm7
+movdqa xmm8, xmm8
+movdqa xmm9, xmm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+cmp;xmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+cmppd xmm0, xmm0, 0
+cmppd xmm1, xmm1, 1
+cmppd xmm2, xmm2, 2
+cmppd xmm3, xmm3, 3
+cmppd xmm4, xmm4, 4
+cmppd xmm5, xmm5, 5
+cmppd xmm6, xmm6, 6
+cmppd xmm7, xmm7, 7
+cmppd xmm8, xmm8, 8
+cmppd xmm9, xmm9, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmppd xmm0, xmm0, 0
+cmppd xmm1, xmm1, 1
+cmppd xmm2, xmm2, 2
+cmppd xmm3, xmm3, 3
+cmppd xmm4, xmm4, 4
+cmppd xmm5, xmm5, 5
+cmppd xmm6, xmm6, 6
+cmppd xmm7, xmm7, 7
+cmppd xmm8, xmm8, 8
+cmppd xmm9, xmm9, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmppd xmm0, xmm0, 0
+cmppd xmm1, xmm1, 1
+cmppd xmm2, xmm2, 2
+cmppd xmm3, xmm3, 3
+cmppd xmm4, xmm4, 4
+cmppd xmm5, xmm5, 5
+cmppd xmm6, xmm6, 6
+cmppd xmm7, xmm7, 7
+cmppd xmm8, xmm8, 8
+cmppd xmm9, xmm9, 9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+xor;xmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+xorpd xmm0, xmm0
+xorpd xmm1, xmm1
+xorpd xmm2, xmm2
+xorpd xmm3, xmm3
+xorpd xmm4, xmm4
+xorpd xmm5, xmm5
+xorpd xmm6, xmm6
+xorpd xmm7, xmm7
+xorpd xmm8, xmm8
+xorpd xmm9, xmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xorpd xmm0, xmm0
+xorpd xmm1, xmm1
+xorpd xmm2, xmm2
+xorpd xmm3, xmm3
+xorpd xmm4, xmm4
+xorpd xmm5, xmm5
+xorpd xmm6, xmm6
+xorpd xmm7, xmm7
+xorpd xmm8, xmm8
+xorpd xmm9, xmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xorpd xmm0, xmm0
+xorpd xmm1, xmm1
+xorpd xmm2, xmm2
+xorpd xmm3, xmm3
+xorpd xmm4, xmm4
+xorpd xmm5, xmm5
+xorpd xmm6, xmm6
+xorpd xmm7, xmm7
+xorpd xmm8, xmm8
+xorpd xmm9, xmm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+add;xmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+addpd xmm0, xmm1
+addpd xmm1, xmm2
+addpd xmm2, xmm3
+addpd xmm3, xmm4
+addpd xmm4, xmm5
+addpd xmm5, xmm6
+addpd xmm6, xmm7
+addpd xmm7, xmm8
+addpd xmm8, xmm9
+addpd xmm9, xmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+addpd xmm0, xmm1
+addpd xmm1, xmm2
+addpd xmm2, xmm3
+addpd xmm3, xmm4
+addpd xmm4, xmm5
+addpd xmm5, xmm6
+addpd xmm6, xmm7
+addpd xmm7, xmm8
+addpd xmm8, xmm9
+addpd xmm9, xmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+addpd xmm0, xmm1
+addpd xmm1, xmm2
+addpd xmm2, xmm3
+addpd xmm3, xmm4
+addpd xmm4, xmm5
+addpd xmm5, xmm6
+addpd xmm6, xmm7
+addpd xmm7, xmm8
+addpd xmm8, xmm9
+addpd xmm9, xmm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+mov;xmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+movdqa xmm0, xmm1
+movdqa xmm1, xmm2
+movdqa xmm2, xmm3
+movdqa xmm3, xmm4
+movdqa xmm4, xmm5
+movdqa xmm5, xmm6
+movdqa xmm6, xmm7
+movdqa xmm7, xmm8
+movdqa xmm8, xmm9
+movdqa xmm9, xmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+movdqa xmm0, xmm1
+movdqa xmm1, xmm2
+movdqa xmm2, xmm3
+movdqa xmm3, xmm4
+movdqa xmm4, xmm5
+movdqa xmm5, xmm6
+movdqa xmm6, xmm7
+movdqa xmm7, xmm8
+movdqa xmm8, xmm9
+movdqa xmm9, xmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+movdqa xmm0, xmm1
+movdqa xmm1, xmm2
+movdqa xmm2, xmm3
+movdqa xmm3, xmm4
+movdqa xmm4, xmm5
+movdqa xmm5, xmm6
+movdqa xmm6, xmm7
+movdqa xmm7, xmm8
+movdqa xmm8, xmm9
+movdqa xmm9, xmm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+cmp;xmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+cmppd xmm0, xmm1, 0
+cmppd xmm1, xmm2, 1
+cmppd xmm2, xmm3, 2
+cmppd xmm3, xmm4, 3
+cmppd xmm4, xmm5, 4
+cmppd xmm5, xmm6, 5
+cmppd xmm6, xmm7, 6
+cmppd xmm7, xmm8, 7
+cmppd xmm8, xmm9, 8
+cmppd xmm9, xmm10, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmppd xmm0, xmm1, 0
+cmppd xmm1, xmm2, 1
+cmppd xmm2, xmm3, 2
+cmppd xmm3, xmm4, 3
+cmppd xmm4, xmm5, 4
+cmppd xmm5, xmm6, 5
+cmppd xmm6, xmm7, 6
+cmppd xmm7, xmm8, 7
+cmppd xmm8, xmm9, 8
+cmppd xmm9, xmm10, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+cmppd xmm0, xmm1, 0
+cmppd xmm1, xmm2, 1
+cmppd xmm2, xmm3, 2
+cmppd xmm3, xmm4, 3
+cmppd xmm4, xmm5, 4
+cmppd xmm5, xmm6, 5
+cmppd xmm6, xmm7, 6
+cmppd xmm7, xmm8, 7
+cmppd xmm8, xmm9, 8
+cmppd xmm9, xmm10, 9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+xor;xmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+xorpd xmm0, xmm1
+xorpd xmm1, xmm2
+xorpd xmm2, xmm3
+xorpd xmm3, xmm4
+xorpd xmm4, xmm5
+xorpd xmm5, xmm6
+xorpd xmm6, xmm7
+xorpd xmm7, xmm8
+xorpd xmm8, xmm9
+xorpd xmm9, xmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xorpd xmm0, xmm1
+xorpd xmm1, xmm2
+xorpd xmm2, xmm3
+xorpd xmm3, xmm4
+xorpd xmm4, xmm5
+xorpd xmm5, xmm6
+xorpd xmm6, xmm7
+xorpd xmm7, xmm8
+xorpd xmm8, xmm9
+xorpd xmm9, xmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+xorpd xmm0, xmm1
+xorpd xmm1, xmm2
+xorpd xmm2, xmm3
+xorpd xmm3, xmm4
+xorpd xmm4, xmm5
+xorpd xmm5, xmm6
+xorpd xmm6, xmm7
+xorpd xmm7, xmm8
+xorpd xmm8, xmm9
+xorpd xmm9, xmm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+add;ymm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vaddpd ymm0, ymm0, ymm0
+vaddpd ymm1, ymm1, ymm1
+vaddpd ymm2, ymm2, ymm2
+vaddpd ymm3, ymm3, ymm3
+vaddpd ymm4, ymm4, ymm4
+vaddpd ymm5, ymm5, ymm5
+vaddpd ymm6, ymm6, ymm6
+vaddpd ymm7, ymm7, ymm7
+vaddpd ymm8, ymm8, ymm8
+vaddpd ymm9, ymm9, ymm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd ymm0, ymm0, ymm0
+vaddpd ymm1, ymm1, ymm1
+vaddpd ymm2, ymm2, ymm2
+vaddpd ymm3, ymm3, ymm3
+vaddpd ymm4, ymm4, ymm4
+vaddpd ymm5, ymm5, ymm5
+vaddpd ymm6, ymm6, ymm6
+vaddpd ymm7, ymm7, ymm7
+vaddpd ymm8, ymm8, ymm8
+vaddpd ymm9, ymm9, ymm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd ymm0, ymm0, ymm0
+vaddpd ymm1, ymm1, ymm1
+vaddpd ymm2, ymm2, ymm2
+vaddpd ymm3, ymm3, ymm3
+vaddpd ymm4, ymm4, ymm4
+vaddpd ymm5, ymm5, ymm5
+vaddpd ymm6, ymm6, ymm6
+vaddpd ymm7, ymm7, ymm7
+vaddpd ymm8, ymm8, ymm8
+vaddpd ymm9, ymm9, ymm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+mov;ymm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vmovdqa ymm0, ymm0
+vmovdqa ymm1, ymm1
+vmovdqa ymm2, ymm2
+vmovdqa ymm3, ymm3
+vmovdqa ymm4, ymm4
+vmovdqa ymm5, ymm5
+vmovdqa ymm6, ymm6
+vmovdqa ymm7, ymm7
+vmovdqa ymm8, ymm8
+vmovdqa ymm9, ymm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa ymm0, ymm0
+vmovdqa ymm1, ymm1
+vmovdqa ymm2, ymm2
+vmovdqa ymm3, ymm3
+vmovdqa ymm4, ymm4
+vmovdqa ymm5, ymm5
+vmovdqa ymm6, ymm6
+vmovdqa ymm7, ymm7
+vmovdqa ymm8, ymm8
+vmovdqa ymm9, ymm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa ymm0, ymm0
+vmovdqa ymm1, ymm1
+vmovdqa ymm2, ymm2
+vmovdqa ymm3, ymm3
+vmovdqa ymm4, ymm4
+vmovdqa ymm5, ymm5
+vmovdqa ymm6, ymm6
+vmovdqa ymm7, ymm7
+vmovdqa ymm8, ymm8
+vmovdqa ymm9, ymm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+cmp;ymm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vcmppd ymm0, ymm0, ymm0, 0
+vcmppd ymm1, ymm1, ymm1, 1
+vcmppd ymm2, ymm2, ymm2, 2
+vcmppd ymm3, ymm3, ymm3, 3
+vcmppd ymm4, ymm4, ymm4, 4
+vcmppd ymm5, ymm5, ymm5, 5
+vcmppd ymm6, ymm6, ymm6, 6
+vcmppd ymm7, ymm7, ymm7, 7
+vcmppd ymm8, ymm8, ymm8, 8
+vcmppd ymm9, ymm9, ymm9, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vcmppd ymm0, ymm0, ymm0, 0
+vcmppd ymm1, ymm1, ymm1, 1
+vcmppd ymm2, ymm2, ymm2, 2
+vcmppd ymm3, ymm3, ymm3, 3
+vcmppd ymm4, ymm4, ymm4, 4
+vcmppd ymm5, ymm5, ymm5, 5
+vcmppd ymm6, ymm6, ymm6, 6
+vcmppd ymm7, ymm7, ymm7, 7
+vcmppd ymm8, ymm8, ymm8, 8
+vcmppd ymm9, ymm9, ymm9, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vcmppd ymm0, ymm0, ymm0, 0
+vcmppd ymm1, ymm1, ymm1, 1
+vcmppd ymm2, ymm2, ymm2, 2
+vcmppd ymm3, ymm3, ymm3, 3
+vcmppd ymm4, ymm4, ymm4, 4
+vcmppd ymm5, ymm5, ymm5, 5
+vcmppd ymm6, ymm6, ymm6, 6
+vcmppd ymm7, ymm7, ymm7, 7
+vcmppd ymm8, ymm8, ymm8, 8
+vcmppd ymm9, ymm9, ymm9, 9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+xor;ymm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vxorpd ymm0, ymm0, ymm0
+vxorpd ymm1, ymm1, ymm1
+vxorpd ymm2, ymm2, ymm2
+vxorpd ymm3, ymm3, ymm3
+vxorpd ymm4, ymm4, ymm4
+vxorpd ymm5, ymm5, ymm5
+vxorpd ymm6, ymm6, ymm6
+vxorpd ymm7, ymm7, ymm7
+vxorpd ymm8, ymm8, ymm8
+vxorpd ymm9, ymm9, ymm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd ymm0, ymm0, ymm0
+vxorpd ymm1, ymm1, ymm1
+vxorpd ymm2, ymm2, ymm2
+vxorpd ymm3, ymm3, ymm3
+vxorpd ymm4, ymm4, ymm4
+vxorpd ymm5, ymm5, ymm5
+vxorpd ymm6, ymm6, ymm6
+vxorpd ymm7, ymm7, ymm7
+vxorpd ymm8, ymm8, ymm8
+vxorpd ymm9, ymm9, ymm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd ymm0, ymm0, ymm0
+vxorpd ymm1, ymm1, ymm1
+vxorpd ymm2, ymm2, ymm2
+vxorpd ymm3, ymm3, ymm3
+vxorpd ymm4, ymm4, ymm4
+vxorpd ymm5, ymm5, ymm5
+vxorpd ymm6, ymm6, ymm6
+vxorpd ymm7, ymm7, ymm7
+vxorpd ymm8, ymm8, ymm8
+vxorpd ymm9, ymm9, ymm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+add;ymm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vaddpd ymm0, ymm1, ymm1
+vaddpd ymm1, ymm2, ymm2
+vaddpd ymm2, ymm3, ymm3
+vaddpd ymm3, ymm4, ymm4
+vaddpd ymm4, ymm5, ymm5
+vaddpd ymm5, ymm6, ymm6
+vaddpd ymm6, ymm7, ymm7
+vaddpd ymm7, ymm8, ymm8
+vaddpd ymm8, ymm9, ymm9
+vaddpd ymm9, ymm10, ymm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd ymm0, ymm1, ymm1
+vaddpd ymm1, ymm2, ymm2
+vaddpd ymm2, ymm3, ymm3
+vaddpd ymm3, ymm4, ymm4
+vaddpd ymm4, ymm5, ymm5
+vaddpd ymm5, ymm6, ymm6
+vaddpd ymm6, ymm7, ymm7
+vaddpd ymm7, ymm8, ymm8
+vaddpd ymm8, ymm9, ymm9
+vaddpd ymm9, ymm10, ymm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd ymm0, ymm1, ymm1
+vaddpd ymm1, ymm2, ymm2
+vaddpd ymm2, ymm3, ymm3
+vaddpd ymm3, ymm4, ymm4
+vaddpd ymm4, ymm5, ymm5
+vaddpd ymm5, ymm6, ymm6
+vaddpd ymm6, ymm7, ymm7
+vaddpd ymm7, ymm8, ymm8
+vaddpd ymm8, ymm9, ymm9
+vaddpd ymm9, ymm10, ymm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+mov;ymm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vmovdqa ymm0, ymm1
+vmovdqa ymm1, ymm2
+vmovdqa ymm2, ymm3
+vmovdqa ymm3, ymm4
+vmovdqa ymm4, ymm5
+vmovdqa ymm5, ymm6
+vmovdqa ymm6, ymm7
+vmovdqa ymm7, ymm8
+vmovdqa ymm8, ymm9
+vmovdqa ymm9, ymm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa ymm0, ymm1
+vmovdqa ymm1, ymm2
+vmovdqa ymm2, ymm3
+vmovdqa ymm3, ymm4
+vmovdqa ymm4, ymm5
+vmovdqa ymm5, ymm6
+vmovdqa ymm6, ymm7
+vmovdqa ymm7, ymm8
+vmovdqa ymm8, ymm9
+vmovdqa ymm9, ymm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa ymm0, ymm1
+vmovdqa ymm1, ymm2
+vmovdqa ymm2, ymm3
+vmovdqa ymm3, ymm4
+vmovdqa ymm4, ymm5
+vmovdqa ymm5, ymm6
+vmovdqa ymm6, ymm7
+vmovdqa ymm7, ymm8
+vmovdqa ymm8, ymm9
+vmovdqa ymm9, ymm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+cmp;ymm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vcmppd ymm0, ymm1, ymm1, 0
+vcmppd ymm1, ymm2, ymm2, 1
+vcmppd ymm2, ymm3, ymm3, 2
+vcmppd ymm3, ymm4, ymm4, 3
+vcmppd ymm4, ymm5, ymm5, 4
+vcmppd ymm5, ymm6, ymm6, 5
+vcmppd ymm6, ymm7, ymm7, 6
+vcmppd ymm7, ymm8, ymm8, 7
+vcmppd ymm8, ymm9, ymm9, 8
+vcmppd ymm9, ymm10, ymm10, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vcmppd ymm0, ymm1, ymm1, 0
+vcmppd ymm1, ymm2, ymm2, 1
+vcmppd ymm2, ymm3, ymm3, 2
+vcmppd ymm3, ymm4, ymm4, 3
+vcmppd ymm4, ymm5, ymm5, 4
+vcmppd ymm5, ymm6, ymm6, 5
+vcmppd ymm6, ymm7, ymm7, 6
+vcmppd ymm7, ymm8, ymm8, 7
+vcmppd ymm8, ymm9, ymm9, 8
+vcmppd ymm9, ymm10, ymm10, 9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vcmppd ymm0, ymm1, ymm1, 0
+vcmppd ymm1, ymm2, ymm2, 1
+vcmppd ymm2, ymm3, ymm3, 2
+vcmppd ymm3, ymm4, ymm4, 3
+vcmppd ymm4, ymm5, ymm5, 4
+vcmppd ymm5, ymm6, ymm6, 5
+vcmppd ymm6, ymm7, ymm7, 6
+vcmppd ymm7, ymm8, ymm8, 7
+vcmppd ymm8, ymm9, ymm9, 8
+vcmppd ymm9, ymm10, ymm10, 9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+xor;ymm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vxorpd ymm0, ymm1, ymm1
+vxorpd ymm1, ymm2, ymm2
+vxorpd ymm2, ymm3, ymm3
+vxorpd ymm3, ymm4, ymm4
+vxorpd ymm4, ymm5, ymm5
+vxorpd ymm5, ymm6, ymm6
+vxorpd ymm6, ymm7, ymm7
+vxorpd ymm7, ymm8, ymm8
+vxorpd ymm8, ymm9, ymm9
+vxorpd ymm9, ymm10, ymm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd ymm0, ymm1, ymm1
+vxorpd ymm1, ymm2, ymm2
+vxorpd ymm2, ymm3, ymm3
+vxorpd ymm3, ymm4, ymm4
+vxorpd ymm4, ymm5, ymm5
+vxorpd ymm5, ymm6, ymm6
+vxorpd ymm6, ymm7, ymm7
+vxorpd ymm7, ymm8, ymm8
+vxorpd ymm8, ymm9, ymm9
+vxorpd ymm9, ymm10, ymm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd ymm0, ymm1, ymm1
+vxorpd ymm1, ymm2, ymm2
+vxorpd ymm2, ymm3, ymm3
+vxorpd ymm3, ymm4, ymm4
+vxorpd ymm4, ymm5, ymm5
+vxorpd ymm5, ymm6, ymm6
+vxorpd ymm6, ymm7, ymm7
+vxorpd ymm7, ymm8, ymm8
+vxorpd ymm8, ymm9, ymm9
+vxorpd ymm9, ymm10, ymm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+add;zmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vaddpd zmm0, zmm0, zmm0
+vaddpd zmm1, zmm1, zmm1
+vaddpd zmm2, zmm2, zmm2
+vaddpd zmm3, zmm3, zmm3
+vaddpd zmm4, zmm4, zmm4
+vaddpd zmm5, zmm5, zmm5
+vaddpd zmm6, zmm6, zmm6
+vaddpd zmm7, zmm7, zmm7
+vaddpd zmm8, zmm8, zmm8
+vaddpd zmm9, zmm9, zmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd zmm0, zmm0, zmm0
+vaddpd zmm1, zmm1, zmm1
+vaddpd zmm2, zmm2, zmm2
+vaddpd zmm3, zmm3, zmm3
+vaddpd zmm4, zmm4, zmm4
+vaddpd zmm5, zmm5, zmm5
+vaddpd zmm6, zmm6, zmm6
+vaddpd zmm7, zmm7, zmm7
+vaddpd zmm8, zmm8, zmm8
+vaddpd zmm9, zmm9, zmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd zmm0, zmm0, zmm0
+vaddpd zmm1, zmm1, zmm1
+vaddpd zmm2, zmm2, zmm2
+vaddpd zmm3, zmm3, zmm3
+vaddpd zmm4, zmm4, zmm4
+vaddpd zmm5, zmm5, zmm5
+vaddpd zmm6, zmm6, zmm6
+vaddpd zmm7, zmm7, zmm7
+vaddpd zmm8, zmm8, zmm8
+vaddpd zmm9, zmm9, zmm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+mov;zmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+cmp;zmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+xor;zmm-registers;non-alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vxorpd zmm0, zmm0, zmm0
+vxorpd zmm1, zmm1, zmm1
+vxorpd zmm2, zmm2, zmm2
+vxorpd zmm3, zmm3, zmm3
+vxorpd zmm4, zmm4, zmm4
+vxorpd zmm5, zmm5, zmm5
+vxorpd zmm6, zmm6, zmm6
+vxorpd zmm7, zmm7, zmm7
+vxorpd zmm8, zmm8, zmm8
+vxorpd zmm9, zmm9, zmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd zmm0, zmm0, zmm0
+vxorpd zmm1, zmm1, zmm1
+vxorpd zmm2, zmm2, zmm2
+vxorpd zmm3, zmm3, zmm3
+vxorpd zmm4, zmm4, zmm4
+vxorpd zmm5, zmm5, zmm5
+vxorpd zmm6, zmm6, zmm6
+vxorpd zmm7, zmm7, zmm7
+vxorpd zmm8, zmm8, zmm8
+vxorpd zmm9, zmm9, zmm9
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd zmm0, zmm0, zmm0
+vxorpd zmm1, zmm1, zmm1
+vxorpd zmm2, zmm2, zmm2
+vxorpd zmm3, zmm3, zmm3
+vxorpd zmm4, zmm4, zmm4
+vxorpd zmm5, zmm5, zmm5
+vxorpd zmm6, zmm6, zmm6
+vxorpd zmm7, zmm7, zmm7
+vxorpd zmm8, zmm8, zmm8
+vxorpd zmm9, zmm9, zmm9
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+add;zmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vaddpd zmm0, zmm1, zmm1
+vaddpd zmm1, zmm2, zmm2
+vaddpd zmm2, zmm3, zmm3
+vaddpd zmm3, zmm4, zmm4
+vaddpd zmm4, zmm5, zmm5
+vaddpd zmm5, zmm6, zmm6
+vaddpd zmm6, zmm7, zmm7
+vaddpd zmm7, zmm8, zmm8
+vaddpd zmm8, zmm9, zmm9
+vaddpd zmm9, zmm10, zmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd zmm0, zmm1, zmm1
+vaddpd zmm1, zmm2, zmm2
+vaddpd zmm2, zmm3, zmm3
+vaddpd zmm3, zmm4, zmm4
+vaddpd zmm4, zmm5, zmm5
+vaddpd zmm5, zmm6, zmm6
+vaddpd zmm6, zmm7, zmm7
+vaddpd zmm7, zmm8, zmm8
+vaddpd zmm8, zmm9, zmm9
+vaddpd zmm9, zmm10, zmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vaddpd zmm0, zmm1, zmm1
+vaddpd zmm1, zmm2, zmm2
+vaddpd zmm2, zmm3, zmm3
+vaddpd zmm3, zmm4, zmm4
+vaddpd zmm4, zmm5, zmm5
+vaddpd zmm5, zmm6, zmm6
+vaddpd zmm6, zmm7, zmm7
+vaddpd zmm7, zmm8, zmm8
+vaddpd zmm8, zmm9, zmm9
+vaddpd zmm9, zmm10, zmm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+mov;zmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+cmp;zmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+xor;zmm-registers;alternating
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 0
+.align 16 (code)
+L0:
+mov rax, [rax]
+vxorpd zmm0, zmm1, zmm1
+vxorpd zmm1, zmm2, zmm2
+vxorpd zmm2, zmm3, zmm3
+vxorpd zmm3, zmm4, zmm4
+vxorpd zmm4, zmm5, zmm5
+vxorpd zmm5, zmm6, zmm6
+vxorpd zmm6, zmm7, zmm7
+vxorpd zmm7, zmm8, zmm8
+vxorpd zmm8, zmm9, zmm9
+vxorpd zmm9, zmm10, zmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd zmm0, zmm1, zmm1
+vxorpd zmm1, zmm2, zmm2
+vxorpd zmm2, zmm3, zmm3
+vxorpd zmm3, zmm4, zmm4
+vxorpd zmm4, zmm5, zmm5
+vxorpd zmm5, zmm6, zmm6
+vxorpd zmm6, zmm7, zmm7
+vxorpd zmm7, zmm8, zmm8
+vxorpd zmm8, zmm9, zmm9
+vxorpd zmm9, zmm10, zmm10
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vxorpd zmm0, zmm1, zmm1
+vxorpd zmm1, zmm2, zmm2
+vxorpd zmm2, zmm3, zmm3
+vxorpd zmm3, zmm4, zmm4
+vxorpd zmm4, zmm5, zmm5
+vxorpd zmm5, zmm6, zmm6
+vxorpd zmm6, zmm7, zmm7
+vxorpd zmm7, zmm8, zmm8
+vxorpd zmm8, zmm9, zmm9
+vxorpd zmm9, zmm10, zmm10
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 0
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+load;gp-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov r8, [rsp]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+load;xmm-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+vmovdqa xmm0, [rsp]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+load;ymm-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+vmovdqa ymm0, [rsp]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+load;zmm-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+store;gp-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov [rsp], r8
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+store;xmm-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+vmovdqa [rsp], xmm0
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+store;ymm-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+vmovdqa [rsp], ymm0
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+
+store;zmm-registers
+.section .text
+push rbx
+push r12
+push r13
+push r14
+push r15
+mov rax, rdi
+mov rbx, rsi
+mov rcx, 2
+mov rdx, rsp
+and rdx, 63
+sub rsp, rdx
+sub rsp, 64
+.align 16 (code)
+L0:
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+mov rax, [rax]
+mov rbx, [rbx]
+lfence
+sub rcx, 1
+jnz L0
+L1:
+add rsp, rdx
+add rsp, 64
+pop r15
+pop r14
+pop r13
+pop r12
+pop rbx
+ret
+

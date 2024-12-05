@@ -16,6 +16,7 @@ auto main(int /*argc*/, const char** /*argv*/) -> int {
   for (const auto& Test : Robsize.avaialableTests()) {
     std::cout << Test->name() << "\n";
     dumpTest(Test);
+    std::cout << "\n";
   }
 
   return EXIT_SUCCESS;

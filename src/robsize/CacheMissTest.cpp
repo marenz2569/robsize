@@ -65,7 +65,7 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
 
   // Initialize the vector registers
   for (auto I = 0; I < 32; I++) {
-    Cb.vmovapd(asmjit::x86::Zmm(I), zmmword_ptr(VectorRegisterData, I * 64));
+    Cb.vmovupd(asmjit::x86::Zmm(I), zmmword_ptr(VectorRegisterData, I * 64));
   }
 
   // Align code to 16B boundary

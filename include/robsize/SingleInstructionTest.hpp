@@ -6,8 +6,10 @@ namespace robsize {
 
 // NOLINTNEXTLINE(performance-enum-size)
 enum class InstructionType {
+  // Nop tests
   kNopInstruction,
   kTwoByteNopInstruction,
+  // Tests with add/mov/cmp/xor instructions and different sized registers
   kAddInstruction,
   kMovInstruction,
   kCmpInstruction,
@@ -40,6 +42,16 @@ enum class InstructionType {
   kZmmMovInstructionAlternating,
   kZmmCmpInstructionAlternating,
   kZmmXorInstructionAlternating,
+  // Load tests with different sized registers
+  kLoadInstruction,
+  kXmmLoadInstruction,
+  kYmmLoadInstruction,
+  kZmmLoadInstruction,
+  // Store tests with different sized registers
+  kStoreInstruction,
+  kXmmStoreInstruction,
+  kYmmStoreInstruction,
+  kZmmStoreInstruction,
 };
 
 constexpr auto getName(enum InstructionType Type) -> const char* {
@@ -112,6 +124,22 @@ constexpr auto getName(enum InstructionType Type) -> const char* {
     return "cmp;zmm-registers;alternating";
   case InstructionType::kZmmXorInstructionAlternating:
     return "xor;zmm-registers;alternating";
+  case InstructionType::kLoadInstruction:
+    return "load;gp-registers";
+  case InstructionType::kXmmLoadInstruction:
+    return "load;xmm-registers";
+  case InstructionType::kYmmLoadInstruction:
+    return "load;ymm-registers";
+  case InstructionType::kZmmLoadInstruction:
+    return "load;zmm-registers";
+  case InstructionType::kStoreInstruction:
+    return "store;gp-registers";
+  case InstructionType::kXmmStoreInstruction:
+    return "store;xmm-registers";
+  case InstructionType::kYmmStoreInstruction:
+    return "store;ymm-registers";
+  case InstructionType::kZmmStoreInstruction:
+    return "store;zmm-registers";
   default:
     return "unknown";
   }
@@ -134,6 +162,7 @@ private:
       // Iterate over the available registers and emit the specified instruction acording to specified instruction type.
       const auto& CurrentGpRegister = AvailableGpRegisters.at(I % AvailableGpRegisters.size());
       const auto& NextGpRegister = AvailableGpRegisters.at((I + 1) % AvailableGpRegisters.size());
+      const auto& FirstGpRegister = AvailableGpRegisters.at(0);
 
       const auto& CurrentXmmRegister = asmjit::x86::Xmm(I % 16);
       const auto& NextXmmRegister = asmjit::x86::Xmm((I + 1) % 16);
@@ -245,6 +274,30 @@ private:
       case InstructionType::kZmmXorInstructionAlternating:
         Cb.vxorpd(CurrentZmmRegister, NextZmmRegister, NextZmmRegister);
         break;
+      case InstructionType::kLoadInstruction:
+        Cb.mov(FirstGpRegister, ptr(asmjit::x86::rsp));
+        break;
+      case InstructionType::kXmmLoadInstruction:
+        Cb.vmovdqa(asmjit::x86::Xmm(0), ptr(asmjit::x86::rsp));
+        break;
+      case InstructionType::kYmmLoadInstruction:
+        Cb.vmovdqa(asmjit::x86::Ymm(0), ptr(asmjit::x86::rsp));
+        break;
+      case InstructionType::kZmmLoadInstruction:
+        Cb.vmovdqa(asmjit::x86::Zmm(0), ptr(asmjit::x86::rsp));
+        break;
+      case InstructionType::kStoreInstruction:
+        Cb.mov(ptr(asmjit::x86::rsp), FirstGpRegister);
+        break;
+      case InstructionType::kXmmStoreInstruction:
+        Cb.vmovdqa(ptr(asmjit::x86::rsp), asmjit::x86::Xmm(0));
+        break;
+      case InstructionType::kYmmStoreInstruction:
+        Cb.vmovdqa(ptr(asmjit::x86::rsp), asmjit::x86::Ymm(0));
+        break;
+      case InstructionType::kZmmStoreInstruction:
+        Cb.vmovdqa(ptr(asmjit::x86::rsp), asmjit::x86::Zmm(0));
+        break;
       }
     }
   }
@@ -252,7 +305,21 @@ private:
   /// Method to get the requried stack size for the test
   /// \returns The required stack size
   auto requiredStackSize() -> unsigned final {
-    // None of the tests need more stack size
+    switch (Type) {
+    case InstructionType::kLoadInstruction:
+    case InstructionType::kXmmLoadInstruction:
+    case InstructionType::kYmmLoadInstruction:
+    case InstructionType::kZmmLoadInstruction:
+    case InstructionType::kStoreInstruction:
+    case InstructionType::kXmmStoreInstruction:
+    case InstructionType::kYmmStoreInstruction:
+    case InstructionType::kZmmStoreInstruction:
+      // Load and store tests require additional stacksize of 64B.
+      return 64;
+    default:
+      // None of the other tests need more stack size
+      return 0;
+    }
     return 0;
   }
 };

@@ -70,6 +70,14 @@ private:
       std::make_shared<SingleInstructionTest<InstructionType::kZmmMovInstructionAlternating>>(),
       std::make_shared<SingleInstructionTest<InstructionType::kZmmCmpInstructionAlternating>>(),
       std::make_shared<SingleInstructionTest<InstructionType::kZmmXorInstructionAlternating>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kLoadInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kXmmLoadInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kYmmLoadInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kZmmLoadInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kStoreInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kXmmStoreInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kYmmStoreInstruction>>(),
+      std::make_shared<SingleInstructionTest<InstructionType::kZmmStoreInstruction>>(),
   };
 };
 

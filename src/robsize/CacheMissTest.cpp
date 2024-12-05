@@ -1,4 +1,5 @@
 #include "robsize/CacheMissTest.hpp"
+#include "asmjit/core/operand.h"
 #include "robsize/TestStats.hpp"
 
 #include <asmjit/asmjit.h>
@@ -17,10 +18,11 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   const auto PointerReg1 = asmjit::x86::rax;
   const auto PointerReg2 = asmjit::x86::rbx;
   const auto CounterReg = asmjit::x86::rcx;
+  const auto StackAlignmentCount = asmjit::x86::rdx;
 
   const std::vector<asmjit::x86::Gpq> AvailableGpRegisters = {
-      asmjit::x86::r8,  asmjit::x86::r9,  asmjit::x86::r10, asmjit::x86::r11, asmjit::x86::r12, asmjit::x86::r13,
-      asmjit::x86::r14, asmjit::x86::r15, asmjit::x86::rdi, asmjit::x86::rsi, asmjit::x86::rdx};
+      asmjit::x86::r8,  asmjit::x86::r9,  asmjit::x86::r10, asmjit::x86::r11, asmjit::x86::r12,
+      asmjit::x86::r13, asmjit::x86::r14, asmjit::x86::r15, asmjit::x86::rdi, asmjit::x86::rsi};
 
   asmjit::FuncDetail Func;
   Func.init(asmjit::FuncSignature::build<void, void**, void**>(asmjit::CallConvId::kCDecl), Code.environment());
@@ -48,8 +50,25 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   // The actual code for the cache miss test
   Cb.mov(CounterReg, asmjit::Imm(InnerLoopRepetitions));
 
+  // Align the stack to 64B boundary
+  {
+    Cb.mov(StackAlignmentCount, asmjit::Imm(0));
+
+    auto AlignLoopStart = Cb.newLabel();
+    auto AlignLoopEnd = Cb.newLabel();
+    Cb.bind(AlignLoopStart);
+
+    Cb.test(asmjit::x86::rsp, asmjit::Imm(64));
+    Cb.jz(AlignLoopEnd);
+    Cb.sub(asmjit::x86::rsp, asmjit::Imm(8));
+    Cb.add(StackAlignmentCount, asmjit::Imm(1));
+    Cb.jmp(AlignLoopStart);
+
+    Cb.bind(AlignLoopEnd);
+  }
+
   // Allocate some stack which is usable by the filler instructions
-  Cb.sub(asmjit::x86::rsp, requiredStackSize());
+  Cb.sub(asmjit::x86::rsp, asmjit::Imm(requiredStackSize()));
 
   // Align code to 16B boundary
   Cb.align(asmjit::AlignMode::kCode, 16);
@@ -76,7 +95,20 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   Cb.bind(LoopExit);
 
   // Restore the stack
-  Cb.add(asmjit::x86::rsp, requiredStackSize());
+  {
+    auto AlignLoopStart = Cb.newLabel();
+    auto AlignLoopEnd = Cb.newLabel();
+    Cb.bind(AlignLoopStart);
+
+    Cb.cmp(StackAlignmentCount, asmjit::Imm(0));
+    Cb.je(AlignLoopEnd);
+    Cb.add(asmjit::x86::rsp, asmjit::Imm(8));
+    Cb.sub(StackAlignmentCount, asmjit::Imm(1));
+
+    Cb.bind(AlignLoopEnd);
+  }
+
+  Cb.add(asmjit::x86::rsp, asmjit::Imm(requiredStackSize()));
 
   Cb.emitEpilog(Frame);
 

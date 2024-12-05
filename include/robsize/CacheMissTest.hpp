@@ -41,6 +41,10 @@ protected:
   virtual void addFillerInstructions(asmjit::x86::Builder& Cb, unsigned InstructionCount,
                                      const std::vector<asmjit::x86::Gpq>& AvailableGpRegisters) = 0;
 
+  /// Virtual method to get the requried stack size for the test
+  /// \returns The required stack size
+  virtual auto requiredStackSize() -> unsigned = 0;
+
 private:
   /// Print the generated assembler Code of asmjit
   /// \arg Builder The builder that contains the assembler code.

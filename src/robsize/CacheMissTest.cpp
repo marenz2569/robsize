@@ -48,6 +48,9 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   // The actual code for the cache miss test
   Cb.mov(CounterReg, asmjit::Imm(InnerLoopRepetitions));
 
+  // Allocate some stack which is usable by the filler instructions
+  Cb.sub(asmjit::x86::rsp, requiredStackSize());
+
   // Align code to 16B boundary
   Cb.align(asmjit::AlignMode::kCode, 16);
 
@@ -69,8 +72,11 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   Cb.sub(CounterReg, asmjit::Imm(1));
   Cb.jnz(LoopStart);
 
-  auto FunctionExit = Cb.newLabel();
-  Cb.bind(FunctionExit);
+  auto LoopExit = Cb.newLabel();
+  Cb.bind(LoopExit);
+
+  // Restore the stack
+  Cb.add(asmjit::x86::rsp, requiredStackSize());
 
   Cb.emitEpilog(Frame);
 
@@ -80,7 +86,7 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
     printAssembler(Cb);
   }
 
-  auto LoopSize = Code.labelOffset(FunctionExit) - Code.labelOffset(LoopStart);
+  auto LoopSize = Code.labelOffset(LoopExit) - Code.labelOffset(LoopStart);
 
   TestStats Stats{.LoopSizeB = LoopSize};
 

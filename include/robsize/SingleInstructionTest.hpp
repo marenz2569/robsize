@@ -248,6 +248,13 @@ private:
       }
     }
   }
+
+  /// Method to get the requried stack size for the test
+  /// \returns The required stack size
+  auto requiredStackSize() -> unsigned final {
+    // None of the tests need more stack size
+    return 0;
+  }
 };
 
 } // namespace robsize

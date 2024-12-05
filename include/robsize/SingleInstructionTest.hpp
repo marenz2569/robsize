@@ -45,73 +45,73 @@ enum class InstructionType {
 constexpr auto getName(enum InstructionType Type) -> const char* {
   switch (Type) {
   case InstructionType::kNopInstruction:
-    return "nop,single-byte";
+    return "nop;single-byte";
   case InstructionType::kTwoByteNopInstruction:
-    return "nop,two-byte";
+    return "nop;two-byte";
   case InstructionType::kAddInstruction:
-    return "add,gp-registers,non-alternating";
+    return "add;gp-registers;non-alternating";
   case InstructionType::kMovInstruction:
-    return "mov,gp-registers,non-alternating";
+    return "mov;gp-registers;non-alternating";
   case InstructionType::kCmpInstruction:
-    return "cmp,gp-registers,non-alternating";
+    return "cmp;gp-registers;non-alternating";
   case InstructionType::kXorInstruction:
-    return "xor,gp-registers,non-alternating";
+    return "xor;gp-registers;non-alternating";
   case InstructionType::kAddInstructionAlternating:
-    return "add,gp-registers,alternating";
+    return "add;gp-registers;alternating";
   case InstructionType::kMovInstructionAlternating:
-    return "mov,gp-registers,alternating";
+    return "mov;gp-registers;alternating";
   case InstructionType::kCmpInstructionAlternating:
-    return "cmp,gp-registers,alternating";
+    return "cmp;gp-registers;alternating";
   case InstructionType::kXorInstructionAlternating:
-    return "xor,gp-registers,alternating";
+    return "xor;gp-registers;alternating";
   case InstructionType::kXmmAddInstruction:
-    return "add,xmm-registers,non-alternating";
+    return "add;xmm-registers;non-alternating";
   case InstructionType::kXmmMovInstruction:
-    return "mov,xmm-registers,non-alternating";
+    return "mov;xmm-registers;non-alternating";
   case InstructionType::kXmmCmpInstruction:
-    return "cmp,xmm-registers,non-alternating";
+    return "cmp;xmm-registers;non-alternating";
   case InstructionType::kXmmXorInstruction:
-    return "xor,xmm-registers,non-alternating";
+    return "xor;xmm-registers;non-alternating";
   case InstructionType::kXmmAddInstructionAlternating:
-    return "add,xmm-registers,alternating";
+    return "add;xmm-registers;alternating";
   case InstructionType::kXmmMovInstructionAlternating:
-    return "mov,xmm-registers,alternating";
+    return "mov;xmm-registers;alternating";
   case InstructionType::kXmmCmpInstructionAlternating:
-    return "cmp,xmm-registers,alternating";
+    return "cmp;xmm-registers;alternating";
   case InstructionType::kXmmXorInstructionAlternating:
-    return "xor,xmm-registers,alternating";
+    return "xor;xmm-registers;alternating";
   case InstructionType::kYmmAddInstruction:
-    return "add,ymm-registers,non-alternating";
+    return "add;ymm-registers;non-alternating";
   case InstructionType::kYmmMovInstruction:
-    return "mov,ymm-registers,non-alternating";
+    return "mov;ymm-registers;non-alternating";
   case InstructionType::kYmmCmpInstruction:
-    return "cmp,ymm-registers,non-alternating";
+    return "cmp;ymm-registers;non-alternating";
   case InstructionType::kYmmXorInstruction:
-    return "xpr,ymm-registers,non-alternating";
+    return "xpr;ymm-registers;non-alternating";
   case InstructionType::kYmmAddInstructionAlternating:
-    return "add,ymm-registers,alternating";
+    return "add;ymm-registers;alternating";
   case InstructionType::kYmmMovInstructionAlternating:
-    return "mov,ymm-registers,alternating";
+    return "mov;ymm-registers;alternating";
   case InstructionType::kYmmCmpInstructionAlternating:
-    return "cmp,ymm-registers,alternating";
+    return "cmp;ymm-registers;alternating";
   case InstructionType::kYmmXorInstructionAlternating:
-    return "xor,ymm-registers,alternating";
+    return "xor;ymm-registers;alternating";
   case InstructionType::kZmmAddInstruction:
-    return "add,zmm-registers,non-alternating";
+    return "add;zmm-registers;non-alternating";
   case InstructionType::kZmmMovInstruction:
-    return "mov,zmm-registers,non-alternating";
+    return "mov;zmm-registers;non-alternating";
   case InstructionType::kZmmCmpInstruction:
-    return "cmp,zmm-registers,non-alternating";
+    return "cmp;zmm-registers;non-alternating";
   case InstructionType::kZmmXorInstruction:
-    return "xor,zmm-registers,non-alternating";
+    return "xor;zmm-registers;non-alternating";
   case InstructionType::kZmmAddInstructionAlternating:
-    return "add,zmm-registers,alternating";
+    return "add;zmm-registers;alternating";
   case InstructionType::kZmmMovInstructionAlternating:
-    return "mov,zmm-registers,alternating";
+    return "mov;zmm-registers;alternating";
   case InstructionType::kZmmCmpInstructionAlternating:
-    return "cmp,zmm-registers,alternating";
+    return "cmp;zmm-registers;alternating";
   case InstructionType::kZmmXorInstructionAlternating:
-    return "xor,zmm-registers,alternating";
+    return "xor;zmm-registers;alternating";
   default:
     return "unknown";
   }

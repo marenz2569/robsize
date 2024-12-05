@@ -7,11 +7,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -74,11 +107,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -141,11 +207,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -208,11 +307,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -275,11 +407,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -342,11 +507,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -409,11 +607,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -476,11 +707,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -543,11 +807,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -610,11 +907,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -677,11 +1007,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -744,11 +1107,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -811,11 +1207,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -878,11 +1307,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -945,11 +1407,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1012,11 +1507,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1079,11 +1607,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1146,11 +1707,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1213,11 +1807,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1280,11 +1907,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1347,11 +2007,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1414,11 +2107,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1481,11 +2207,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1548,11 +2307,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1615,11 +2407,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1682,11 +2507,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1749,11 +2607,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1816,11 +2707,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1853,11 +2777,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1890,11 +2847,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -1957,11 +2947,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2024,11 +3047,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2061,11 +3117,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2098,11 +3187,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 0
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2165,11 +3287,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2232,11 +3387,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2299,11 +3487,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2366,11 +3587,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2403,11 +3657,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2470,11 +3757,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2537,11 +3857,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]
@@ -2604,11 +3957,44 @@ push r14
 push r15
 mov rax, rdi
 mov rbx, rsi
+mov r8, rdx
 mov rcx, 2
 mov rdx, rsp
 and rdx, 63
 sub rsp, rdx
 sub rsp, 64
+vmovupd zmm0, zmmword ptr [r8]
+vmovupd zmm1, zmmword ptr [r8+64]
+vmovupd zmm2, zmmword ptr [r8+128]
+vmovupd zmm3, zmmword ptr [r8+192]
+vmovupd zmm4, zmmword ptr [r8+256]
+vmovupd zmm5, zmmword ptr [r8+320]
+vmovupd zmm6, zmmword ptr [r8+384]
+vmovupd zmm7, zmmword ptr [r8+448]
+vmovupd zmm8, zmmword ptr [r8+512]
+vmovupd zmm9, zmmword ptr [r8+576]
+vmovupd zmm10, zmmword ptr [r8+640]
+vmovupd zmm11, zmmword ptr [r8+704]
+vmovupd zmm12, zmmword ptr [r8+768]
+vmovupd zmm13, zmmword ptr [r8+832]
+vmovupd zmm14, zmmword ptr [r8+896]
+vmovupd zmm15, zmmword ptr [r8+960]
+vmovupd zmm16, zmmword ptr [r8+1024]
+vmovupd zmm17, zmmword ptr [r8+1088]
+vmovupd zmm18, zmmword ptr [r8+1152]
+vmovupd zmm19, zmmword ptr [r8+1216]
+vmovupd zmm20, zmmword ptr [r8+1280]
+vmovupd zmm21, zmmword ptr [r8+1344]
+vmovupd zmm22, zmmword ptr [r8+1408]
+vmovupd zmm23, zmmword ptr [r8+1472]
+vmovupd zmm24, zmmword ptr [r8+1536]
+vmovupd zmm25, zmmword ptr [r8+1600]
+vmovupd zmm26, zmmword ptr [r8+1664]
+vmovupd zmm27, zmmword ptr [r8+1728]
+vmovupd zmm28, zmmword ptr [r8+1792]
+vmovupd zmm29, zmmword ptr [r8+1856]
+vmovupd zmm30, zmmword ptr [r8+1920]
+vmovupd zmm31, zmmword ptr [r8+1984]
 .align 16 (code)
 L0:
 mov rax, [rax]

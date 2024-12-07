@@ -7,7 +7,6 @@ import subprocess
 
 def run_and_update(executable, ref_file, update_refs):
     p = subprocess.Popen([ executable ], stdout=subprocess.PIPE)
-    p.wait()
     stdout, _ = p.communicate()
     
     reference = open(ref_file, 'rb').read()

@@ -2,6 +2,7 @@
 
 #include "robsize/TestStats.hpp"
 
+#include <array>
 #include <asmjit/asmjit.h>
 #include <memory>
 #include <stdexcept>

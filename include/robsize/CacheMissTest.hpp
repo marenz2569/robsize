@@ -30,8 +30,8 @@ public:
   /// \arg InnerLoopRepetitions The number of time the inner unrolled loop gets repeateadly executed.
   /// \arg UnrollCount The number of times the inner loop is unrolled
   /// \arg PrintAssembler Print the generated assembler to stdout
-  auto compileTest(unsigned InstructionCount, unsigned InnerLoopRepetitions, unsigned UnrollCount, bool PrintAssembler)
-      -> CompiledTest::UniquePtr;
+  auto compileTest(unsigned InstructionCount, unsigned InnerLoopRepetitions, unsigned UnrollCount,
+                   bool PrintAssembler) -> CompiledTest::UniquePtr;
 
 protected:
   /// Virtual method to add the filler instructions between the two cache accesses that should miss.

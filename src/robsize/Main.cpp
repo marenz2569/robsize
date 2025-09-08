@@ -23,7 +23,7 @@ void checkStackSize() {
 /// Set the affinity to the supplied os cpu index.
 /// \arg Cpu The cpu index to which this thread should be bound to.
 void setAffinity(std::size_t Cpu) {
-  const pthread_t Thread = pthread_self();
+  const auto Thread = pthread_self();
   cpu_set_t Cpus;
 
   CPU_ZERO(&Cpus);

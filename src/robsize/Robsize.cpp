@@ -21,9 +21,9 @@ void createRandomLinkedListAccessPattern(std::array<void*, robsize::AddressBuffe
     Elem = static_cast<void*>(&Elem);
   }
 
-  // TODO: use constant seed
-  std::random_device Rd;
-  std::mt19937 Rng(Rd());
+  // Shuffle the elements with a pre defined seed
+  // NOLINTNEXTLINE(cert-msc51-cpp,cert-msc32-c)
+  std::mt19937 Rng;
   std::shuffle(Pointers.begin(), Pointers.end(), Rng);
 }
 

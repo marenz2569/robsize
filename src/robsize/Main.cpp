@@ -2,7 +2,10 @@
 #include "robsize/Robsize.hpp"
 
 #include <cstdlib>
+#include <exception>
 #include <iostream>
+#include <pthread.h>
+#include <sched.h>
 #include <stdexcept>
 #include <sys/resource.h>
 
@@ -20,7 +23,7 @@ void checkStackSize() {
 /// Set the affinity to the supplied os cpu index.
 /// \arg Cpu The cpu index to which this thread should be bound to.
 void setAffinity(std::size_t Cpu) {
-  pthread_t Thread = pthread_self();
+  const pthread_t Thread = pthread_self();
   cpu_set_t Cpus;
 
   CPU_ZERO(&Cpus);
@@ -35,11 +38,10 @@ auto main(int Argc, const char** Argv) -> int {
   std::cout << "robsize - Microarchitectural benchmark to measure the reorder buffer size based on the methodoly "
                "described by Henry Wong, Version "
             << _ROBSIZE_VERSION_STRING << "\n"
-            << "Copyright (C) " << _ROBSIZE_BUILD_YEAR << " Markus Schmidl"
-            << "\n";
+            << "Copyright (C) " << _ROBSIZE_BUILD_YEAR << " Markus Schmidl" << "\n";
 
   try {
-    robsize::Config Cfg{Argc, Argv};
+    const robsize::Config Cfg{Argc, Argv};
 
     robsize::RobsizeTest Robsize;
 

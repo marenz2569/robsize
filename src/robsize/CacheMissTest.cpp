@@ -1,8 +1,10 @@
 #include "robsize/CacheMissTest.hpp"
-#include "asmjit/core/operand.h"
+#include "robsize/CompiledTest.hpp"
 #include "robsize/TestStats.hpp"
 
 #include <asmjit/asmjit.h>
+#include <asmjit/x86.h>
+#include <vector>
 
 namespace robsize {
 
@@ -12,8 +14,8 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
   Code.init(asmjit::Environment::host());
 
   asmjit::x86::Builder Cb(&Code);
-  Cb.addDiagnosticOptions(asmjit::DiagnosticOptions::kValidateAssembler |
-                          asmjit::DiagnosticOptions::kValidateIntermediate);
+  Cb.addDiagnosticOptions(asmjit::DiagnosticOptions::kValidateAssembler);
+  Cb.addDiagnosticOptions(asmjit::DiagnosticOptions::kValidateIntermediate);
 
   const auto PointerReg1 = asmjit::x86::rax;
   const auto PointerReg2 = asmjit::x86::rbx;
@@ -107,7 +109,7 @@ auto CacheMissTest::compileTest(unsigned InstructionCount, unsigned InnerLoopRep
 
   auto LoopSize = Code.labelOffset(LoopExit) - Code.labelOffset(LoopStart);
 
-  TestStats Stats{.LoopSizeB = LoopSize};
+  const TestStats Stats{.LoopSizeB = LoopSize};
 
   return CompiledTest::create(Stats, Code);
 }

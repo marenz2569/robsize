@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <cstdlib>
 #include <cxxopts.hpp>
+#include <exception>
 #include <iostream>
 #include <stdexcept>
 

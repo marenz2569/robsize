@@ -1,4 +1,6 @@
 #include "robsize/Robsize.hpp"
+#include "robsize/Config.hpp"
+#include "robsize/RobsizeResults.hpp"
 
 #include <algorithm>
 #include <array>
@@ -6,6 +8,7 @@
 #include <limits>
 #include <random>
 #include <stdexcept>
+#include <vector>
 
 namespace {
 
@@ -13,6 +16,8 @@ void createRandomLinkedListAccessPattern(std::array<void*, robsize::AddressBuffe
   // Write the address of each element to the pointer array and shuffle it around to create (ideally one) chains of
   // pointers. Increment the AddressBufferSize to a number big enough to create a long enough chain.
   for (auto& Elem : Pointers) {
+    // Assign each element the address of itself.
+    // NOLINTNEXTLINE(bugprone-multi-level-implicit-pointer-conversion)
     Elem = static_cast<void*>(&Elem);
   }
 
@@ -111,12 +116,12 @@ auto RobsizeTest::runTest(unsigned Start, unsigned Stop, unsigned Unroll, unsign
       TotalCycles += Cycles;
     }
 
-    RobsizeResult Result{.TestId = TestId,
-                         .TestName = TestPtr->name(),
-                         .InstructionCount = InstructionCount,
-                         .MinCycles = MinCyles,
-                         .AverageCycles = TotalCycles / OuterIterations,
-                         .MaxCycles = MaxCycles};
+    const RobsizeResult Result{.TestId = TestId,
+                               .TestName = TestPtr->name(),
+                               .InstructionCount = InstructionCount,
+                               .MinCycles = MinCyles,
+                               .AverageCycles = TotalCycles / OuterIterations,
+                               .MaxCycles = MaxCycles};
 
     Results.emplace_back(Result);
   }

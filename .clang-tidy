@@ -37,7 +37,7 @@ Checks: >
   -readability-magic-numbers,
   -bugprone-easily-swappable-parameters,
   -readability-function-cognitive-complexity
-  
+
 # Turn all the warnings from the checks above into errors.
 WarningsAsErrors: "*"
 
@@ -62,3 +62,4 @@ CheckOptions:
   - { key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic, value: "true" }
   # disable warnings is asmjit
   - { key: 'clang-analyzer-optin.cplusplus.UninitializedObject:IgnoreRecordsWithField', value: 'asmjit::Operand_::Signature' }
+  - { key: 'misc-include-cleaner.IgnoreHeaders', value: '.*asmjit.*' }

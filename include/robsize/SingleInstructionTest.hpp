@@ -168,6 +168,8 @@ private:
       const auto& NextXmmRegister = asmjit::x86::Xmm((I + 1) % 32);
       const auto& CurrentYmmRegister = asmjit::x86::Ymm(I % 32);
       const auto& NextYmmRegister = asmjit::x86::Ymm((I + 1) % 32);
+      const auto& CurrentYmmRegister16 = asmjit::x86::Ymm(I % 16);
+      const auto& NextYmmRegister16 = asmjit::x86::Ymm((I + 1) % 16);
       const auto& CurrentZmmRegister = asmjit::x86::Zmm(I % 32);
       const auto& NextZmmRegister = asmjit::x86::Zmm((I + 1) % 32);
 
@@ -233,7 +235,7 @@ private:
         Cb.vmovdqa(CurrentYmmRegister, CurrentYmmRegister);
         break;
       case InstructionType::kYmmCmpInstruction:
-        Cb.vcmppd(CurrentYmmRegister, CurrentYmmRegister, CurrentYmmRegister, asmjit::Imm(I));
+        Cb.vcmppd(CurrentYmmRegister16, CurrentYmmRegister16, CurrentYmmRegister16, asmjit::Imm(I));
         break;
       case InstructionType::kYmmXorInstruction:
         Cb.vxorpd(CurrentYmmRegister, CurrentYmmRegister, CurrentYmmRegister);
@@ -245,7 +247,7 @@ private:
         Cb.vmovdqa(CurrentYmmRegister, NextYmmRegister);
         break;
       case InstructionType::kYmmCmpInstructionAlternating:
-        Cb.vcmppd(CurrentYmmRegister, NextYmmRegister, NextYmmRegister, asmjit::Imm(I));
+        Cb.vcmppd(CurrentYmmRegister16, NextYmmRegister16, NextYmmRegister16, asmjit::Imm(I));
         break;
       case InstructionType::kYmmXorInstructionAlternating:
         Cb.vxorpd(CurrentYmmRegister, NextYmmRegister, NextYmmRegister);

@@ -164,10 +164,10 @@ private:
       const auto& NextGpRegister = AvailableGpRegisters.at((I + 1) % AvailableGpRegisters.size());
       const auto& FirstGpRegister = AvailableGpRegisters.at(0);
 
-      const auto& CurrentXmmRegister = asmjit::x86::Xmm(I % 16);
-      const auto& NextXmmRegister = asmjit::x86::Xmm((I + 1) % 16);
-      const auto& CurrentYmmRegister = asmjit::x86::Ymm(I % 16);
-      const auto& NextYmmRegister = asmjit::x86::Ymm((I + 1) % 16);
+      const auto& CurrentXmmRegister = asmjit::x86::Xmm(I % 32);
+      const auto& NextXmmRegister = asmjit::x86::Xmm((I + 1) % 32);
+      const auto& CurrentYmmRegister = asmjit::x86::Ymm(I % 32);
+      const auto& NextYmmRegister = asmjit::x86::Ymm((I + 1) % 32);
       const auto& CurrentZmmRegister = asmjit::x86::Zmm(I % 32);
       const auto& NextZmmRegister = asmjit::x86::Zmm((I + 1) % 32);
 

@@ -168,8 +168,8 @@ private:
       const auto& NextXmmRegister = asmjit::x86::Xmm((I + 1) % 16);
       const auto& CurrentYmmRegister = asmjit::x86::Ymm(I % 16);
       const auto& NextYmmRegister = asmjit::x86::Ymm((I + 1) % 16);
-      const auto& CurrentZmmRegister = asmjit::x86::Zmm(I % 16);
-      const auto& NextZmmRegister = asmjit::x86::Zmm((I + 1) % 16);
+      const auto& CurrentZmmRegister = asmjit::x86::Zmm(I % 32);
+      const auto& NextZmmRegister = asmjit::x86::Zmm((I + 1) % 32);
 
       switch (Type) {
       case InstructionType::kNopInstruction:
